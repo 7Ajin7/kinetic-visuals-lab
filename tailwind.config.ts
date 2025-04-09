@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -212,6 +213,26 @@ export default {
             clip: 'rect(4px, 9999px, 91px, 0)'
           },
         },
+        'scale-in': {
+          '0%': { 
+            transform: 'scale(0.9)',
+            opacity: '0'
+          },
+          '100%': { 
+            transform: 'scale(1)',
+            opacity: '1'
+          }
+        },
+        'scale-in-y': {
+          '0%': { 
+            transform: 'scaleY(0)',
+            opacity: '0'
+          },
+          '100%': { 
+            transform: 'scaleY(1)',
+            opacity: '1'
+          }
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -226,6 +247,8 @@ export default {
         'scanner': 'scanner 4s linear infinite',
         'scan-horizontal': 'scan-horizontal 3s linear infinite',
         'glitch': 'glitch 1s infinite linear alternate-reverse',
+        'scale-in': 'scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'scale-in-y': 'scale-in-y 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

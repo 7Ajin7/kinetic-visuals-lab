@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ShoppingCart, Download, Search, X, Tag, Info, Package } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -30,7 +29,6 @@ const Shop = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const { toast } = useToast();
   
-  // Sample products
   const products: Product[] = [
     {
       id: 1,
@@ -347,19 +345,6 @@ const Shop = () => {
                   <p className="text-muted-foreground">No products found matching your criteria.</p>
                 </div>
               )}
-              
-              <div className="mt-16 text-center reveal" style={{ transitionDelay: '600ms' }}>
-                <p className="text-muted-foreground mb-4">
-                  Looking for custom assets or project files?
-                </p>
-                <a 
-                  href="/contact" 
-                  className="inline-flex items-center px-5 py-2 border border-white/20 hover:border-accent1 rounded-sm transition-all duration-300 hover-trigger"
-                >
-                  <Download size={18} className="mr-2" />
-                  Request Custom Assets
-                </a>
-              </div>
             </div>
           </div>
         </div>
@@ -373,7 +358,6 @@ const Shop = () => {
           title={selectedProduct.name}
           variant="product"
         >
-          {/* Left Side - Images */}
           <div className="h-full overflow-auto scrollbar-none border-r border-accent1/10 p-6">
             <div className="space-y-4">
               {(selectedProduct.images || [selectedProduct.thumbnail]).map((image, idx) => (
@@ -391,7 +375,6 @@ const Shop = () => {
             </div>
           </div>
           
-          {/* Right Side - Info */}
           <div className="p-6 overflow-y-auto scrollbar-none">
             <div className="mb-1 flex items-center text-xs font-mono text-accent1">
               <div className="size-2 rounded-full bg-accent1 mr-2"></div>

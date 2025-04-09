@@ -61,9 +61,16 @@ const DetailModal: React.FC<DetailModalProps> = ({
       <div 
         ref={modalRef}
         className={cn(
-          "relative bg-background/95 border border-accent1/20 rounded-sm overflow-hidden w-full max-w-6xl max-h-[90vh] animate-scale-in",
+          "relative bg-background/95 border border-accent1/20 rounded-sm overflow-hidden w-full max-w-6xl max-h-[90vh] origin-center",
+          "animate-[scale-in_0.4s_ease-out_forwards]", // Custom animation for sci-fi effect
           variant === 'product' ? 'h-[80vh]' : 'h-[85vh]'
         )}
+        style={{
+          animationName: 'scaleInY',
+          animationDuration: '0.4s',
+          animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+          animationFillMode: 'forwards',
+        }}
       >
         <SciFiElements variant="modal" />
         
@@ -84,6 +91,19 @@ const DetailModal: React.FC<DetailModalProps> = ({
           {children}
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes scaleInY {
+          from {
+            transform: scaleY(0);
+            opacity: 0;
+          }
+          to {
+            transform: scaleY(1);
+            opacity: 1;
+          }
+        }
+      `}</style>
     </div>
   );
 };
