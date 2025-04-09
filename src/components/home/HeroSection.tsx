@@ -74,7 +74,7 @@ const HeroSection: React.FC = () => {
           >
             <Link 
               to="/works" 
-              className="inline-flex items-center px-6 py-3 bg-accent1 hover:bg-accent1/80 text-white font-medium rounded-full transition-all duration-300 hover-trigger"
+              className="inline-flex items-center px-6 py-3 bg-accent1 hover:bg-accent1/80 text-white font-medium rounded-sm transition-all duration-300 hover-trigger"
             >
               View My Work
               <ArrowRight size={18} className="ml-2" />

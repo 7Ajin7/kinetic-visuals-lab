@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -67,15 +66,12 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))'
         },
-        // New color palette based on provided image
         accent1: '#FF0000', // Red accent
         accent2: '#00BCD4', // Teal accent
-        accent3: '#FFCC00', // Yellow accent
+        accent3: '#FFFFFF', // White accent
         darkBg: '#000000', // Pure black
         darkBg2: '#0D0C0C', // Dark gray
         lightBg: '#FFFFFF', // Pure white
-        redAccent: '#FF0000', // Primary red
-        darkRed: '#9A0404', // Dark red
       },
       borderRadius: {
         lg: 'var(--radius)',

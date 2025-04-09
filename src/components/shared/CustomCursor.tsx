@@ -19,22 +19,8 @@ const CustomCursor: React.FC = () => {
         cursorRef.current.style.top = `${position.y}px`;
 
         // For the follower - smooth positioning with transition
-        requestAnimationFrame(() => {
-          if (followerRef.current) {
-            // LERP (Linear Interpolation) for smooth following
-            const followerRect = followerRef.current.getBoundingClientRect();
-            const currentX = followerRect.left + followerRect.width / 2;
-            const currentY = followerRect.top + followerRect.height / 2;
-            
-            const dx = position.x - currentX;
-            const dy = position.y - currentY;
-            
-            // Smoother following effect
-            followerRef.current.style.transform = `translate(calc(-50% + ${dx * 0.15}px), calc(-50% + ${dy * 0.15}px))`;
-            followerRef.current.style.left = `${position.x}px`;
-            followerRef.current.style.top = `${position.y}px`;
-          }
-        });
+        followerRef.current.style.left = `${position.x}px`;
+        followerRef.current.style.top = `${position.y}px`;
       }
     };
 
@@ -45,8 +31,11 @@ const CustomCursor: React.FC = () => {
     document.addEventListener('mouseenter', handleMouseEnter);
     document.addEventListener('mouseleave', handleMouseLeave);
 
-    // Run animation frame for smooth follower movement
-    const animationFrame = setInterval(updateCursor, 1000 / 60); // Approx. 60fps
+    // Run animation frame for smoother follower movement
+    const animationId = requestAnimationFrame(function animate() {
+      updateCursor();
+      requestAnimationFrame(animate);
+    });
 
     // Add 'custom-cursor' class to the body
     document.body.classList.add('custom-cursor');
@@ -55,7 +44,7 @@ const CustomCursor: React.FC = () => {
       document.removeEventListener('mousemove', updatePosition);
       document.removeEventListener('mouseenter', handleMouseEnter);
       document.removeEventListener('mouseleave', handleMouseLeave);
-      clearInterval(animationFrame);
+      cancelAnimationFrame(animationId);
       document.body.classList.remove('custom-cursor');
     };
   }, [position]);
@@ -78,7 +67,8 @@ const CustomCursor: React.FC = () => {
         className="cursor-follower fixed z-[998] pointer-events-none w-10 h-10 rounded-full mix-blend-difference bg-accent1/30"
         style={{
           opacity: isVisible ? 0.5 : 0,
-          transition: 'opacity 0.3s ease, width 0.2s ease, height 0.2s ease'
+          transform: 'translate(-50%, -50%)',
+          transition: 'opacity 0.3s ease, transform 0.15s ease-out, width 0.2s ease, height 0.2s ease'
         }}
       />
     </>

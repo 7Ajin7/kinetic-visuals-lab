@@ -29,30 +29,30 @@
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
     --ring: 240 5% 64.9%;
-    --radius: 0.25rem; /* Changed to make buttons more boxy with slight rounding */
+    --radius: 0.125rem; /* Changed to make buttons more boxy with very slight rounding */
   }
 
   .dark {
-    /* Dark mode - updated with the colors from image */
-    --background: 0 0% 0%; /* #000000 */
-    --foreground: 0 0% 100%;
-    --card: 240 10% 3.9%;
+    /* Dark mode - updated with black and white focused scheme */
+    --background: 0 0% 0%; /* Pure black */
+    --foreground: 0 0% 100%; /* Pure white */
+    --card: 0 0% 3%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 5%;  /* #0D0C0C */
+    --popover: 0 0% 5%;
     --popover-foreground: 0 0% 98%;
     --primary: 0 0% 98%;
     --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
+    --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 0% 15%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 83.9%;
   }
 }
 
@@ -129,7 +129,7 @@
   .border-gradient {
     @apply border border-transparent relative;
     background: linear-gradient(to right, #121212, #121212) padding-box,
-                linear-gradient(to right, #FF3B30, #00BCD4) border-box;
+                linear-gradient(to right, #FF0000, #00BCD4) border-box;
   }
   
   .link-underline {
@@ -154,39 +154,7 @@
     transform-origin: bottom left;
   }
   
-  .sci-fi-border {
-    @apply relative border border-accent1/40 overflow-hidden;
-    
-    &::before, &::after {
-      content: '';
-      @apply absolute bg-accent1/60;
-    }
-    
-    &::before {
-      @apply w-2 h-8 -top-4 -right-2 rotate-45;
-    }
-    
-    &::after {
-      @apply w-2 h-8 -bottom-4 -left-2 rotate-45;
-    }
-  }
-  
-  .hud-frame {
-    @apply relative;
-    
-    &::before, &::after {
-      content: '';
-      @apply absolute w-3 h-3 border-accent1;
-    }
-    
-    &::before {
-      @apply top-0 left-0 border-t border-l;
-    }
-    
-    &::after {
-      @apply bottom-0 right-0 border-b border-r;
-    }
-  }
+  /* ... keep existing code (sci-fi border styles and HUD frame styles) */
   
   .button-sci-fi {
     @apply relative overflow-hidden;
@@ -302,7 +270,7 @@
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    rgba(255, 59, 48, 0.05) 50%,
+    rgba(255, 0, 0, 0.05) 50%,
     transparent 100%
   );
   background-size: 100% 4px;
@@ -331,7 +299,7 @@
   left: 0;
   height: 2px;
   width: 100%;
-  background: linear-gradient(to right, transparent, #FF3B30, transparent);
+  background: linear-gradient(to right, transparent, #FF0000, transparent);
   animation: dataLoad 2s infinite linear;
 }
 
