@@ -2,7 +2,7 @@
 import React from 'react';
 
 interface SciFiElementsProps {
-  variant?: 'header' | 'footer' | 'content' | 'modal';
+  variant?: 'header' | 'footer' | 'content' | 'modal' | 'about';
 }
 
 const SciFiElements: React.FC<SciFiElementsProps> = ({ variant = 'content' }) => {
@@ -47,6 +47,27 @@ const SciFiElements: React.FC<SciFiElementsProps> = ({ variant = 'content' }) =>
         
         <div className="absolute top-6 right-8 text-[8px] font-mono text-accent1/70">ID:237A-X</div>
         <div className="absolute bottom-6 left-8 text-[8px] font-mono text-accent1/70">SYS:ACTIVE</div>
+      </div>
+    );
+  }
+
+  if (variant === 'about') {
+    return (
+      <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-20">
+        <div className="absolute top-0 left-6 h-8 w-8 border-l-2 border-t-2 border-accent1"></div>
+        <div className="absolute top-0 right-6 h-8 w-8 border-r-2 border-t-2 border-accent2"></div>
+        <div className="absolute bottom-0 left-6 h-8 w-8 border-l-2 border-b-2 border-accent2"></div>
+        <div className="absolute bottom-0 right-6 h-8 w-8 border-r-2 border-b-2 border-accent1"></div>
+        
+        <div className="absolute top-1/4 right-12 h-0.5 w-16 bg-accent1/30"></div>
+        <div className="absolute bottom-1/4 left-12 h-0.5 w-16 bg-accent2/30"></div>
+        
+        <div className="absolute top-12 left-1/3 text-[8px] font-mono text-accent1/60">
+          PROFILE:ACTIVE
+        </div>
+        
+        <div className="absolute bottom-10 right-1/4 size-6 border border-accent1/30 rounded-full"></div>
+        <div className="absolute top-1/3 left-16 size-3 border border-accent2/30 rounded-full"></div>
       </div>
     );
   }
