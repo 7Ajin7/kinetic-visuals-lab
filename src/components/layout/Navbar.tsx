@@ -1,102 +1,126 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import SocialLinks from '../shared/SocialLinks';
-import { cn } from '@/lib/utils';
+import ThemeToggle from '../shared/ThemeToggle';
+import SciFiElements from '../shared/SciFiElements';
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
+  const location = useLocation();
+  
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 20) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
     };
-
+    
     window.addEventListener('scroll', handleScroll);
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    document.body.classList.toggle('overflow-hidden');
-  };
-
-  const navLinks = [
-    { title: 'Home', path: '/' },
-    { title: 'About', path: '/about' },
-    { title: 'Works', path: '/works' },
-    { title: 'Shop', path: '/shop' },
-    { title: 'Contact', path: '/contact' },
+  
+  // Close mobile menu when location changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
+  
+  const navItems = [
+    { path: '/', label: 'Home' },
+    { path: '/about', label: 'About' },
+    { path: '/works', label: 'Works' },
+    { path: '/shop', label: 'Shop' },
+    { path: '/contact', label: 'Contact' }
   ];
-
+  
+  const isActive = (path: string) => {
+    if (path === '/' && location.pathname === '/') return true;
+    if (path !== '/' && location.pathname.startsWith(path)) return true;
+    return false;
+  };
+  
   return (
-    <header className={cn(
-      'fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4',
-      scrolled ? 'bg-background/80 backdrop-blur-md border-b border-white/5' : 'bg-transparent'
-    )}>
-      <div className="container flex items-center justify-between">
-        <Link to="/" className="text-xl font-display tracking-tighter z-20">
-          <span className="text-gradient-1">A.A.D</span>
+    <header 
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        scrolled ? 'py-3 bg-background/80 backdrop-blur-lg shadow-sm' : 'py-5'
+      }`}
+    >
+      <div className="container px-4 mx-auto flex justify-between items-center">
+        <Link to="/" className="text-xl md:text-2xl font-bold font-display tracking-tighter hover-trigger relative">
+          <span className="relative z-10">Ajin Abraham Daniel</span>
+          <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-accent1 transition-all duration-300 group-hover:w-full"></span>
         </Link>
         
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <div className="flex items-center space-x-6">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.path} 
-                to={link.path} 
-                className="text-sm hover-trigger font-medium text-muted-foreground hover:text-foreground transition-colors link-underline"
+        <div className="flex items-center gap-4">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`text-sm hover-trigger transition-colors relative ${
+                  isActive(item.path)
+                    ? 'text-accent1'
+                    : 'text-white hover:text-accent1'
+                }`}
               >
-                {link.title}
+                <span>{item.label}</span>
+                {isActive(item.path) && (
+                  <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-accent1"></span>
+                )}
               </Link>
             ))}
-          </div>
-          <div className="h-4 border-l border-muted"></div>
-          <SocialLinks className="flex items-center space-x-4" iconSize={18} />
-        </nav>
-        
-        {/* Mobile Menu Button */}
-        <button 
-          onClick={toggleMenu} 
-          className="p-2 -m-2 md:hidden z-20 hover-trigger"
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? 
-            <X size={24} className="text-foreground" /> : 
-            <Menu size={24} className="text-foreground" />
-          }
-        </button>
-        
-        {/* Mobile Navigation */}
-        <div className={cn(
-          'fixed inset-0 z-10 bg-background flex flex-col items-center justify-center transition-all duration-300 md:hidden',
-          isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        )}>
-          <nav className="flex flex-col items-center space-y-8">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.path} 
-                to={link.path} 
-                className="text-xl font-medium hover-trigger"
-                onClick={toggleMenu}
-              >
-                {link.title}
-              </Link>
-            ))}
-            <div className="w-40 border-t border-muted my-4"></div>
-            <SocialLinks className="flex items-center space-x-6" iconSize={22} />
           </nav>
+
+          {/* Theme Toggle */}
+          <ThemeToggle />
+          
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 hover-trigger"
+            aria-label="Toggle mobile menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
+      
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <div className="fixed inset-0 top-[57px] bg-background z-30 md:hidden animate-fade-in">
+          <SciFiElements />
+          <div className="container px-4 py-8 mx-auto">
+            <nav className="flex flex-col gap-6 items-center">
+              {navItems.map((item, i) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`text-xl hover-trigger transition-colors relative ${
+                    isActive(item.path)
+                      ? 'text-accent1'
+                      : 'text-white hover:text-accent1'
+                  } animate-slide-in`}
+                  style={{ animationDelay: `${i * 0.1}s` }}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+            
+            <div className="mt-12 flex justify-center animate-slide-in" style={{ animationDelay: '0.5s' }}>
+              <SocialLinks size={24} gap={6} />
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

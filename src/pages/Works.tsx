@@ -1,11 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { X } from 'lucide-react';
+import { X, Eye, AlertTriangle, CornerDownRight } from 'lucide-react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import CustomCursor from '../components/shared/CustomCursor';
 import AnimatedBackground from '../components/shared/AnimatedBackground';
+import DetailModal from '../components/shared/DetailModal';
+import SciFiElements from '../components/shared/SciFiElements';
+import ThemeToggle from '../components/shared/ThemeToggle';
 
 interface WorkItem {
   id: number;
@@ -153,18 +156,6 @@ const Works = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (selectedWork) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [selectedWork]);
-
   return (
     <div className="min-h-screen overflow-x-hidden">
       <CustomCursor />
@@ -174,13 +165,18 @@ const Works = () => {
           <AnimatedBackground />
           <div className="relative z-10 pt-32 pb-16">
             <div className="container px-4">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 reveal">
-                My <span className="text-gradient-1">Works</span>
-              </h1>
-              
-              <p className="text-muted-foreground max-w-2xl mb-12 reveal" style={{ transitionDelay: '200ms' }}>
-                Explore my portfolio of projects spanning 3D art, motion graphics, visual effects, and commercial work. Each piece represents a unique creative challenge and technical achievement.
-              </p>
+              <div className="flex justify-between items-center mb-12">
+                <div>
+                  <h1 className="text-4xl md:text-5xl font-bold mb-4 reveal">
+                    My <span className="text-gradient-1">Works</span>
+                  </h1>
+                  
+                  <p className="text-muted-foreground max-w-2xl mb-12 reveal" style={{ transitionDelay: '200ms' }}>
+                    Explore my portfolio of projects spanning 3D art, motion graphics, visual effects, and commercial work. Each piece represents a unique creative challenge and technical achievement.
+                  </p>
+                </div>
+                <ThemeToggle />
+              </div>
               
               <div className="flex flex-wrap gap-3 mb-10 reveal" style={{ transitionDelay: '300ms' }}>
                 {categories.map((category) => (
@@ -188,10 +184,10 @@ const Works = () => {
                     key={category}
                     onClick={() => setFilter(category)}
                     className={cn(
-                      "px-4 py-2 rounded-full text-sm transition-all duration-300",
+                      "px-4 py-2 rounded-sm text-sm transition-all duration-300 border",
                       filter === category
-                        ? "bg-accent1 text-white"
-                        : "bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-white"
+                        ? "bg-accent1 text-white border-accent1"
+                        : "bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-white border-white/10"
                     )}
                   >
                     {category === 'all' ? 'All' : category}
@@ -203,7 +199,7 @@ const Works = () => {
                 {filteredItems.map((item) => (
                   <div 
                     key={item.id} 
-                    className="group relative bg-black/20 rounded-lg overflow-hidden border border-white/5 hover-trigger cursor-pointer"
+                    className="group relative bg-black/20 rounded-sm overflow-hidden border border-white/5 hover-trigger cursor-pointer"
                     onClick={() => setSelectedWork(item)}
                   >
                     <div className="aspect-[4/3] overflow-hidden">
@@ -218,11 +214,22 @@ const Works = () => {
                       <h3 className="text-xl font-bold">{item.title}</h3>
                       <div className="flex flex-wrap gap-2 mt-3">
                         {item.tools.map((tool) => (
-                          <span key={tool} className="text-xs bg-white/10 px-2 py-1 rounded-full">
+                          <span key={tool} className="text-xs bg-white/10 px-2 py-1 rounded-sm">
                             {tool}
                           </span>
                         ))}
                       </div>
+                      
+                      <button 
+                        className="mt-4 px-4 py-2 border border-accent1/50 bg-black/50 text-white rounded-sm flex items-center justify-center hover:bg-accent1/20 transition-colors"
+                      >
+                        <Eye size={16} className="mr-2" /> View Project
+                      </button>
+                    </div>
+                    
+                    <div className="absolute top-4 left-4 flex space-x-1">
+                      <div className="size-2 rounded-full bg-accent1 animate-pulse-slow"></div>
+                      <div className="size-2 rounded-full bg-accent2 animate-pulse-slow" style={{ animationDelay: '0.5s' }}></div>
                     </div>
                   </div>
                 ))}
@@ -232,80 +239,91 @@ const Works = () => {
         </div>
       </main>
       
-      {/* Work Detail Modal */}
+      {/* Project Detail Modal */}
       {selectedWork && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6">
-          <div 
-            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-            onClick={() => setSelectedWork(null)}
-          ></div>
+        <DetailModal
+          isOpen={!!selectedWork}
+          onClose={() => setSelectedWork(null)}
+          title={selectedWork.title}
+          variant="project"
+        >
+          {/* Left Side - Images/Videos */}
+          <div className="h-full overflow-auto scrollbar-none border-r border-accent1/10 p-6">
+            {selectedWork.videoUrl ? (
+              <div className="aspect-video overflow-hidden rounded-sm mb-6">
+                <iframe 
+                  className="w-full h-full"
+                  src={selectedWork.videoUrl} 
+                  title={selectedWork.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            ) : selectedWork.images && (
+              <div className="space-y-4">
+                {selectedWork.images.map((image, idx) => (
+                  <div key={idx} className="relative group">
+                    <img 
+                      src={image} 
+                      alt={`${selectedWork.title} - Image ${idx + 1}`}
+                      className="w-full rounded-sm border border-accent1/10"
+                    />
+                    <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm px-2 py-1 text-xs font-mono">
+                      {idx + 1}/{selectedWork.images?.length}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
           
-          <div className="relative bg-background border border-white/10 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <button
-              className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors z-10"
-              onClick={() => setSelectedWork(null)}
-            >
-              <X size={20} />
-            </button>
+          {/* Right Side - Info */}
+          <div className="p-6 overflow-y-auto scrollbar-none">
+            <div className="mb-1 flex items-center text-xs font-mono text-accent1">
+              <div className="size-2 rounded-full bg-accent1 mr-2"></div>
+              <span>{selectedWork.category}</span>
+            </div>
             
-            <div className="p-6 md:p-8">
-              <span className="text-xs font-medium text-accent1 uppercase tracking-wider">
-                {selectedWork.category}
-              </span>
-              
-              <h2 className="text-2xl md:text-3xl font-bold mt-2 mb-4">
-                {selectedWork.title}
-              </h2>
-              
-              <div className="mb-6">
-                {selectedWork.videoUrl ? (
-                  <div className="aspect-video overflow-hidden rounded-lg">
-                    <iframe 
-                      className="w-full h-full"
-                      src={selectedWork.videoUrl} 
-                      title={selectedWork.title}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
-                  </div>
-                ) : selectedWork.images && (
-                  <div className="space-y-4">
-                    {selectedWork.images.map((image, idx) => (
-                      <img 
-                        key={idx}
-                        src={image} 
-                        alt={`${selectedWork.title} - Image ${idx + 1}`}
-                        className="w-full rounded-lg"
-                      />
-                    ))}
-                  </div>
-                )}
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 font-display">
+              {selectedWork.title}
+            </h2>
+            
+            <div className="mb-6 space-y-4">
+              <h3 className="text-lg font-semibold flex items-center">
+                <CornerDownRight size={16} className="mr-2 text-accent1" />
+                Project Details
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {selectedWork.description}
+              </p>
+            </div>
+            
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-3 flex items-center">
+                <CornerDownRight size={16} className="mr-2 text-accent1" />
+                Software Used
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {selectedWork.tools.map((tool) => (
+                  <span 
+                    key={tool} 
+                    className="px-3 py-1 bg-white/5 border border-accent1/20 rounded-sm text-sm"
+                  >
+                    {tool}
+                  </span>
+                ))}
               </div>
-              
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-2">Description</h3>
-                <p className="text-muted-foreground">
-                  {selectedWork.description}
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-semibold mb-2">Tools Used</h3>
-                <div className="flex flex-wrap gap-2">
-                  {selectedWork.tools.map((tool) => (
-                    <span 
-                      key={tool} 
-                      className="px-3 py-1 bg-white/5 rounded-full text-sm"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
+            </div>
+            
+            <div className="pt-4 border-t border-white/10">
+              <div className="flex items-center text-xs text-muted-foreground">
+                <AlertTriangle size={12} className="mr-1 text-accent3" />
+                <span>Project ID: {selectedWork.id.toString().padStart(4, '0')}</span>
               </div>
             </div>
           </div>
-        </div>
+        </DetailModal>
       )}
       
       <Footer />

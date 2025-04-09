@@ -1,10 +1,11 @@
 
 import React, { useEffect, useRef } from 'react';
+import { ArrowRight } from 'lucide-react';
+import SoftwareExpertise from '../shared/SoftwareExpertise';
+import SciFiElements from '../shared/SciFiElements';
 
 const AboutSection: React.FC = () => {
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const skillsRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -18,80 +19,80 @@ const AboutSection: React.FC = () => {
       { threshold: 0.1 }
     );
 
-    if (headingRef.current) observer.observe(headingRef.current);
-    if (textRef.current) observer.observe(textRef.current);
-    if (skillsRef.current) observer.observe(skillsRef.current);
+    if (sectionRef.current) observer.observe(sectionRef.current);
 
     return () => {
-      if (headingRef.current) observer.unobserve(headingRef.current);
-      if (textRef.current) observer.unobserve(textRef.current);
-      if (skillsRef.current) observer.unobserve(skillsRef.current);
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, []);
 
-  const skills = [
-    { name: 'Blender', level: 95 },
-    { name: 'After Effects', level: 90 },
-    { name: 'Cinema 4D', level: 85 },
-    { name: 'Houdini', level: 80 },
-    { name: 'Unreal Engine', level: 75 },
-    { name: 'Substance Designer', level: 70 },
-  ];
-
   return (
-    <section className="py-20 bg-black/30">
+    <section id="about" className="py-20 relative" ref={sectionRef}>
       <div className="container px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 
-            ref={headingRef}
-            className="text-3xl md:text-4xl font-bold mb-8 reveal"
-          >
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 reveal">
             About <span className="text-gradient-1">Me</span>
           </h2>
-          
-          <div 
-            ref={textRef}
-            className="space-y-6 text-muted-foreground reveal"
-            style={{ transitionDelay: '200ms' }}
-          >
-            <p>
-              I'm Ajin Abraham Daniel, a passionate 3D artist and motion designer with a keen eye for detail and a love for creating immersive visual experiences. My work combines technical precision with artistic expression to bring ideas to life through movement and form.
+
+          <div className="reveal" style={{ transitionDelay: '200ms' }}>
+            <p className="text-muted-foreground mb-6">
+              I'm Ajin Abraham Daniel, a 3D Artist and Motion Designer based in [Your Location]. I specialize in creating bold visual narratives through the fusion of design and motion.
             </p>
             
-            <p>
-              With expertise in industry-standard tools and a background in both commercial and artistic projects, I specialize in creating compelling visual narratives that engage and inspire audiences. My approach is collaborative, detail-oriented, and focused on delivering high-quality results that exceed expectations.
+            <p className="text-muted-foreground mb-6">
+              With a background in graphic design and a passion for animation, I've developed a unique approach to visual storytelling that combines technical precision with artistic vision. My work spans from commercial projects for global brands to experimental personal explorations.
             </p>
             
-            <p>
-              Whether it's crafting stunning 3D environments, designing fluid animations, or producing eye-catching visual effects, I bring creativity and technical skill to every project. I'm constantly exploring new techniques and pushing the boundaries of what's possible in digital art and motion design.
+            <p className="text-muted-foreground mb-8">
+              I'm driven by the challenge of translating complex ideas into clear, compelling visual experiences. Whether it's crafting realistic 3D environments or designing abstract motion pieces, I focus on creating work that resonates emotionally while achieving strategic objectives.
             </p>
           </div>
           
-          <div 
-            ref={skillsRef}
-            className="mt-12 reveal"
-            style={{ transitionDelay: '400ms' }}
-          >
-            <h3 className="text-xl font-semibold mb-6">Technical Skills</h3>
-            
-            <div className="space-y-6">
-              {skills.map((skill) => (
-                <div key={skill.name} className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="font-medium">{skill.name}</span>
-                    <span className="text-muted-foreground">{skill.level}%</span>
-                  </div>
-                  <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-accent1 rounded-full"
-                      style={{ 
-                        width: `${skill.level}%`, 
-                        transition: 'width 1s ease-in-out' 
-                      }}
-                    />
-                  </div>
+          <div className="mb-10 reveal" style={{ transitionDelay: '400ms' }}>
+            <SoftwareExpertise />
+          </div>
+          
+          <div className="reveal relative" style={{ transitionDelay: '600ms' }}>
+            <div className="relative p-6 border border-white/10 rounded-sm bg-white/5 backdrop-blur-sm">
+              <SciFiElements />
+              <h3 className="text-xl md:text-2xl font-bold mb-4">Experience & Education</h3>
+              
+              <div className="space-y-6">
+                <div className="relative pl-6 border-l border-accent1/30">
+                  <div className="absolute left-0 top-0 transform -translate-x-1/2 w-3 h-3 bg-black border border-accent1 rounded-full"></div>
+                  <div className="font-medium">Senior Motion Designer</div>
+                  <div className="text-sm text-muted-foreground">Creative Studio XYZ • 2020 - Present</div>
+                  <div className="text-sm mt-2">Lead motion graphics and 3D animation projects for clients across tech, entertainment, and lifestyle industries.</div>
                 </div>
-              ))}
+                
+                <div className="relative pl-6 border-l border-accent1/30">
+                  <div className="absolute left-0 top-0 transform -translate-x-1/2 w-3 h-3 bg-black border border-accent1 rounded-full"></div>
+                  <div className="font-medium">3D Artist & Animator</div>
+                  <div className="text-sm text-muted-foreground">Digital Arts Agency • 2017 - 2020</div>
+                  <div className="text-sm mt-2">Created 3D assets, animations, and visual effects for advertising campaigns and digital experiences.</div>
+                </div>
+                
+                <div className="relative pl-6 border-l border-accent1/30">
+                  <div className="absolute left-0 top-0 transform -translate-x-1/2 w-3 h-3 bg-black border border-accent1 rounded-full"></div>
+                  <div className="font-medium">BFA in Motion Media Design</div>
+                  <div className="text-sm text-muted-foreground">University of Creative Arts • 2013 - 2017</div>
+                  <div className="text-sm mt-2">Specialized in 3D animation and motion graphics with a minor in digital storytelling.</div>
+                </div>
+                
+                <div className="relative pl-6">
+                  <div className="absolute left-0 top-0 transform -translate-x-1/2 w-3 h-3 bg-black border border-accent1 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex justify-center mt-10">
+              <a 
+                href="/about" 
+                className="group flex items-center px-6 py-2.5 border border-white/20 hover:border-accent1 rounded-sm transition-all duration-300 hover-trigger"
+              >
+                More About Me
+                <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
+              </a>
             </div>
           </div>
         </div>
