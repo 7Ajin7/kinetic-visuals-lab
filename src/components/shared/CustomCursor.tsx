@@ -6,36 +6,23 @@ const CustomCursor: React.FC = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const followerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+
     const updatePosition = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-    };
-
-    const updateCursor = () => {
-      if (cursorRef.current && followerRef.current) {
-        // For the main cursor - direct positioning for responsiveness
-        cursorRef.current.style.left = `${position.x}px`;
-        cursorRef.current.style.top = `${position.y}px`;
-
-        // For the follower - smooth positioning with transition
-        followerRef.current.style.left = `${position.x}px`;
-        followerRef.current.style.top = `${position.y}px`;
-      }
+      requestAnimationFrame(() => {
+        setPosition({ x: e.clientX, y: e.clientY });
+      });
     };
 
     const handleMouseEnter = () => setIsVisible(true);
     const handleMouseLeave = () => setIsVisible(false);
 
-    document.addEventListener('mousemove', updatePosition);
+    document.addEventListener('mousemove', updatePosition, { passive: true });
     document.addEventListener('mouseenter', handleMouseEnter);
     document.addEventListener('mouseleave', handleMouseLeave);
-
-    // Run animation frame for smoother follower movement
-    const animationId = requestAnimationFrame(function animate() {
-      updateCursor();
-      requestAnimationFrame(animate);
-    });
 
     // Add 'custom-cursor' class to the body
     document.body.classList.add('custom-cursor');
@@ -44,10 +31,23 @@ const CustomCursor: React.FC = () => {
       document.removeEventListener('mousemove', updatePosition);
       document.removeEventListener('mouseenter', handleMouseEnter);
       document.removeEventListener('mouseleave', handleMouseLeave);
-      cancelAnimationFrame(animationId);
       document.body.classList.remove('custom-cursor');
     };
-  }, [position]);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+    
+    if (cursorRef.current) {
+      cursorRef.current.style.left = `${position.x}px`;
+      cursorRef.current.style.top = `${position.y}px`;
+    }
+    
+    if (followerRef.current) {
+      followerRef.current.style.left = `${position.x}px`;
+      followerRef.current.style.top = `${position.y}px`;
+    }
+  }, [position, isMounted]);
 
   if (typeof window === 'undefined') return null;
 

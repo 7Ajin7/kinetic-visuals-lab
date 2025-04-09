@@ -77,7 +77,7 @@ const ContactSection: React.FC = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-1 focus:ring-accent1 focus:border-accent1 outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm focus:ring-1 focus:ring-accent1 focus:border-accent1 outline-none transition-all"
                   />
                 </div>
                 
@@ -92,7 +92,7 @@ const ContactSection: React.FC = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-1 focus:ring-accent1 focus:border-accent1 outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm focus:ring-1 focus:ring-accent1 focus:border-accent1 outline-none transition-all"
                   />
                 </div>
                 
@@ -107,18 +107,18 @@ const ContactSection: React.FC = () => {
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-1 focus:ring-accent1 focus:border-accent1 outline-none transition-all resize-none"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm focus:ring-1 focus:ring-accent1 focus:border-accent1 outline-none transition-all resize-none"
                   />
                 </div>
                 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center px-6 py-3 bg-accent1 hover:bg-accent1/80 text-white font-medium rounded-full transition-all duration-300 hover-trigger disabled:opacity-70"
+                  className="inline-flex items-center px-6 py-3 bg-white text-black hover:bg-accent1 hover:text-white font-medium rounded-sm transition-all duration-300 hover-trigger disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="animate-spin mr-2 h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
+                      <div className="animate-spin mr-2 h-4 w-4 border-2 border-black border-t-transparent rounded-full"></div>
                       Sending...
                     </>
                   ) : (
@@ -132,7 +132,7 @@ const ContactSection: React.FC = () => {
             </div>
             
             <div className="lg:col-span-2 space-y-8">
-              <div className="glass-card p-6 rounded-lg">
+              <div className="glass-card p-6 rounded-sm">
                 <h3 className="text-xl font-semibold mb-4">Contact Details</h3>
                 <div className="space-y-4">
                   <div>
@@ -153,7 +153,7 @@ const ContactSection: React.FC = () => {
                 </div>
               </div>
               
-              <div className="glass-card p-6 rounded-lg">
+              <div className="glass-card p-6 rounded-sm">
                 <h3 className="text-xl font-semibold mb-4">Follow Me</h3>
                 <p className="text-muted-foreground mb-4">
                   Find my latest works and updates on social media.

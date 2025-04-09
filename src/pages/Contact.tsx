@@ -97,7 +97,7 @@ const Contact = () => {
                             required
                             value={formData.name}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-1 focus:ring-accent1 focus:border-accent1 outline-none transition-all"
+                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm focus:ring-1 focus:ring-accent1 focus:border-accent1 outline-none transition-all"
                             placeholder="Your name"
                           />
                         </div>
@@ -113,7 +113,7 @@ const Contact = () => {
                             required
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-1 focus:ring-accent1 focus:border-accent1 outline-none transition-all"
+                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm focus:ring-1 focus:ring-accent1 focus:border-accent1 outline-none transition-all"
                             placeholder="Your email"
                           />
                         </div>
@@ -130,7 +130,7 @@ const Contact = () => {
                           required
                           value={formData.subject}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-1 focus:ring-accent1 focus:border-accent1 outline-none transition-all"
+                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm focus:ring-1 focus:ring-accent1 focus:border-accent1 outline-none transition-all"
                           placeholder="Subject of your message"
                         />
                       </div>
@@ -146,7 +146,7 @@ const Contact = () => {
                           rows={6}
                           value={formData.message}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-1 focus:ring-accent1 focus:border-accent1 outline-none transition-all resize-none"
+                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm focus:ring-1 focus:ring-accent1 focus:border-accent1 outline-none transition-all resize-none"
                           placeholder="Your message"
                         />
                       </div>
@@ -154,11 +154,11 @@ const Contact = () => {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="inline-flex items-center px-6 py-3 bg-accent1 hover:bg-accent1/80 text-white font-medium rounded-full transition-all duration-300 hover-trigger disabled:opacity-70"
+                        className="inline-flex items-center px-6 py-3 bg-white text-black hover:bg-accent1 hover:text-white font-medium rounded-sm transition-all duration-300 hover-trigger disabled:opacity-70 disabled:cursor-not-allowed"
                       >
                         {isSubmitting ? (
                           <>
-                            <div className="animate-spin mr-2 h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
+                            <div className="animate-spin mr-2 h-4 w-4 border-2 border-black border-t-transparent rounded-full"></div>
                             Sending...
                           </>
                         ) : (
@@ -172,7 +172,7 @@ const Contact = () => {
                   </div>
                   
                   <div className="lg:col-span-2 space-y-8">
-                    <div className="glass-card p-6 rounded-lg">
+                    <div className="glass-card p-6 rounded-sm">
                       <h2 className="text-xl font-semibold mb-4">Contact Information</h2>
                       <div className="space-y-6">
                         <div className="flex gap-4">
@@ -212,7 +212,7 @@ const Contact = () => {
                       </div>
                     </div>
                     
-                    <div className="glass-card p-6 rounded-lg">
+                    <div className="glass-card p-6 rounded-sm">
                       <h2 className="text-xl font-semibold mb-4">Follow Me</h2>
                       <p className="text-muted-foreground mb-6">
                         Connect with me on social media for the latest updates on my work and projects.
@@ -222,7 +222,7 @@ const Contact = () => {
                           href="https://www.linkedin.com/in/ajin-abraham-daniel-99023024a/" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="flex items-center gap-3 p-3 bg-white/5 hover:bg-white/10 rounded-lg transition-colors group"
+                          className="flex items-center gap-3 p-3 bg-white/5 hover:bg-white/10 rounded-sm transition-colors group"
                         >
                           <div className="w-8 h-8 flex items-center justify-center rounded-full bg-[#0077B5]/20">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0077B5" viewBox="0 0 24 24">
@@ -236,7 +236,7 @@ const Contact = () => {
                           href="https://www.instagram.com/7_ajin_7" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="flex items-center gap-3 p-3 bg-white/5 hover:bg-white/10 rounded-lg transition-colors group"
+                          className="flex items-center gap-3 p-3 bg-white/5 hover:bg-white/10 rounded-sm transition-colors group"
                         >
                           <div className="w-8 h-8 flex items-center justify-center rounded-full bg-[#E1306C]/20">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#E1306C" viewBox="0 0 24 24">
@@ -250,7 +250,7 @@ const Contact = () => {
                           href="https://www.behance.net/ajinabraham5" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="flex items-center gap-3 p-3 bg-white/5 hover:bg-white/10 rounded-lg transition-colors group"
+                          className="flex items-center gap-3 p-3 bg-white/5 hover:bg-white/10 rounded-sm transition-colors group"
                         >
                           <div className="w-8 h-8 flex items-center justify-center rounded-full bg-[#1769FF]/20">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1769FF" viewBox="0 0 24 24">
@@ -264,7 +264,7 @@ const Contact = () => {
                           href="https://www.artstation.com/ajinabrahamdaniel7" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="flex items-center gap-3 p-3 bg-white/5 hover:bg-white/10 rounded-lg transition-colors group"
+                          className="flex items-center gap-3 p-3 bg-white/5 hover:bg-white/10 rounded-sm transition-colors group"
                         >
                           <div className="w-8 h-8 flex items-center justify-center rounded-full bg-[#13AFF0]/20">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#13AFF0" viewBox="0 0 24 24">

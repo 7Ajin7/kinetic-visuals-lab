@@ -28,24 +28,51 @@ const AboutSection: React.FC = () => {
 
   return (
     <section id="about" className="py-20 relative" ref={sectionRef}>
+      <SciFiElements variant="about" />
       <div className="container px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 reveal">
             About <span className="text-gradient-1">Me</span>
           </h2>
 
-          <div className="reveal" style={{ transitionDelay: '200ms' }}>
-            <p className="text-muted-foreground mb-6">
-              I'm Ajin Abraham Daniel, a 3D Artist and Motion Designer based in [Your Location]. I specialize in creating bold visual narratives through the fusion of design and motion.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="md:col-span-1 reveal" style={{ transitionDelay: '200ms' }}>
+              <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-white/10 glass-card">
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                  {/* Placeholder profile image with sci-fi frame */}
+                  <div className="relative w-full h-full">
+                    <div className="absolute inset-0 bg-gradient-to-b from-accent1/5 to-accent2/5"></div>
+                    <div className="absolute top-2 left-2 w-12 h-12 border-t-2 border-l-2 border-accent1"></div>
+                    <div className="absolute top-2 right-2 w-12 h-12 border-t-2 border-r-2 border-accent2"></div>
+                    <div className="absolute bottom-2 left-2 w-12 h-12 border-b-2 border-l-2 border-accent2"></div>
+                    <div className="absolute bottom-2 right-2 w-12 h-12 border-b-2 border-r-2 border-accent1"></div>
+                    <div className="w-full h-full flex items-center justify-center">
+                      <svg className="w-1/2 h-1/2 text-white/20" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    {/* Scan line effect */}
+                    <div className="absolute inset-0 sci-fi-scanner"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
             
-            <p className="text-muted-foreground mb-6">
-              With a background in graphic design and a passion for animation, I've developed a unique approach to visual storytelling that combines technical precision with artistic vision. My work spans from commercial projects for global brands to experimental personal explorations.
-            </p>
-            
-            <p className="text-muted-foreground mb-8">
-              I'm driven by the challenge of translating complex ideas into clear, compelling visual experiences. Whether it's crafting realistic 3D environments or designing abstract motion pieces, I focus on creating work that resonates emotionally while achieving strategic objectives.
-            </p>
+            <div className="md:col-span-2">
+              <div className="reveal" style={{ transitionDelay: '300ms' }}>
+                <p className="text-muted-foreground mb-6">
+                  I'm Ajin Abraham Daniel, a 3D Artist and Motion Designer based in [Your Location]. I specialize in creating bold visual narratives through the fusion of design and motion.
+                </p>
+                
+                <p className="text-muted-foreground mb-6">
+                  With a background in graphic design and a passion for animation, I've developed a unique approach to visual storytelling that combines technical precision with artistic vision. My work spans from commercial projects for global brands to experimental personal explorations.
+                </p>
+                
+                <p className="text-muted-foreground mb-8">
+                  I'm driven by the challenge of translating complex ideas into clear, compelling visual experiences. Whether it's crafting realistic 3D environments or designing abstract motion pieces, I focus on creating work that resonates emotionally while achieving strategic objectives.
+                </p>
+              </div>
+            </div>
           </div>
           
           <div className="mb-10 reveal" style={{ transitionDelay: '400ms' }}>
@@ -88,7 +115,7 @@ const AboutSection: React.FC = () => {
             <div className="flex justify-center mt-10">
               <a 
                 href="/about" 
-                className="group flex items-center px-6 py-2.5 border border-white/20 hover:border-accent1 rounded-sm transition-all duration-300 hover-trigger"
+                className="group flex items-center px-6 py-2.5 bg-white text-black hover:bg-accent1 hover:text-white rounded-sm transition-all duration-300 hover-trigger"
               >
                 More About Me
                 <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />

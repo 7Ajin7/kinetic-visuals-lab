@@ -154,7 +154,20 @@
     transform-origin: bottom left;
   }
   
-  /* ... keep existing code (sci-fi border styles and HUD frame styles) */
+  /* Interactive hero title animation */
+  .interactive-title span {
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.3s ease;
+  }
+  
+  .interactive-title:hover span {
+    color: white;
+  }
+  
+  .interactive-title span:hover {
+    transform: scale(1.4) translateY(-2px);
+    color: theme('colors.accent1.DEFAULT');
+  }
   
   .button-sci-fi {
     @apply relative overflow-hidden;
@@ -168,17 +181,22 @@
       @apply opacity-100;
     }
   }
+  
+  /* Modal animation */
+  .animate-scale-in {
+    animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
 }
 
 /* Custom cursor */
 .cursor {
-  @apply fixed pointer-events-none z-50 w-6 h-6 rounded-full mix-blend-difference bg-white;
+  @apply fixed pointer-events-none z-[999] w-6 h-6 rounded-full mix-blend-difference bg-white;
   transform: translate(-50%, -50%);
   transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
 }
 
 .cursor-follower {
-  @apply fixed pointer-events-none z-40 w-10 h-10 rounded-full mix-blend-difference bg-accent1/30 opacity-50;
+  @apply fixed pointer-events-none z-[998] w-10 h-10 rounded-full mix-blend-difference bg-accent1/30 opacity-50;
   transform: translate(-50%, -50%);
   transition: transform 0.3s ease, width 0.2s ease, height 0.2s ease;
 }
@@ -306,4 +324,30 @@
 @keyframes dataLoad {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
+}
+
+/* Scale in animation for modal */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Fade in animation */
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

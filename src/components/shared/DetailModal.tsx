@@ -49,20 +49,20 @@ const DetailModal: React.FC<DetailModalProps> = ({
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
       aria-modal="true"
       role="dialog"
     >
       <div 
-        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/80 backdrop-blur-sm animate-fade-in"
         onClick={onClose}
       />
       
       <div 
         ref={modalRef}
         className={cn(
-          "relative bg-background/95 border border-accent1/20 rounded-sm overflow-hidden w-full max-w-5xl max-h-[90vh] animate-fade-in",
-          variant === 'product' ? 'h-[75vh]' : 'h-[80vh]'
+          "relative bg-background/95 border border-accent1/20 rounded-sm overflow-hidden w-full max-w-6xl max-h-[90vh] animate-scale-in",
+          variant === 'product' ? 'h-[80vh]' : 'h-[85vh]'
         )}
       >
         <SciFiElements variant="modal" />

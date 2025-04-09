@@ -35,6 +35,10 @@ const HeroSection: React.FC = () => {
     };
   }, []);
 
+  // Split name into individual characters for hover effect
+  const nameText = "Ajin Abraham Daniel";
+  const nameChars = nameText.split("");
+
   return (
     <section className="min-h-screen relative flex items-center justify-center pt-24 pb-16 overflow-hidden">
       <AnimatedBackground />
@@ -45,10 +49,14 @@ const HeroSection: React.FC = () => {
         <div className="max-w-4xl mx-auto text-center">
           <h1 
             ref={titleRef} 
-            className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-4 reveal"
+            className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-4 reveal interactive-title"
             style={{ transitionDelay: '200ms' }}
           >
-            <span className="block">Ajin Abraham Daniel</span>
+            {nameChars.map((char, index) => (
+              <span key={index} className="transition-transform">
+                {char === " " ? "\u00A0" : char}
+              </span>
+            ))}
           </h1>
           
           <h2 
@@ -74,7 +82,7 @@ const HeroSection: React.FC = () => {
           >
             <Link 
               to="/works" 
-              className="inline-flex items-center px-6 py-3 bg-accent1 hover:bg-accent1/80 text-white font-medium rounded-sm transition-all duration-300 hover-trigger"
+              className="inline-flex items-center px-6 py-3 bg-white text-black hover:bg-accent1 hover:text-white font-medium rounded-sm transition-all duration-300 hover-trigger"
             >
               View My Work
               <ArrowRight size={18} className="ml-2" />
