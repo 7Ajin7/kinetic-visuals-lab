@@ -82,12 +82,10 @@ const About = () => {
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="relative w-full h-full">
                           <img 
-                            src="/lovable-uploads/1daa91b8-542c-45fe-897f-156d75c0a93e.png" 
+                            src="/lovable-uploads/11116b2c-9b50-46c3-9c89-1fd904a943cb.png" 
                             alt="Ajin Abraham Daniel" 
                             className="w-full h-full object-cover"
                           />
-                          {/* Scan line effect */}
-                          <div className="absolute inset-0 sci-fi-scanner"></div>
                         </div>
                       </div>
                     </div>
@@ -127,14 +125,14 @@ const About = () => {
                           {item.year}
                         </div>
                         
-                        <div className="md:col-span-4">
+                        <div className="md:col-span-4 relative">
                           <div className="absolute left-0 md:left-auto md:right-full top-1 md:mr-8 w-3 h-3 rounded-full bg-black border border-accent1"></div>
                           <h3 className="text-xl font-semibold mb-2">{item.role}</h3>
                           <p className="text-muted-foreground">{item.description}</p>
                           
-                          {/* Connect dots with line except for the last item */}
+                          {/* Connect dots with line */}
                           {index < timelineItems.length - 1 && (
-                            <div className="absolute left-1.5 top-6 bottom-0 w-px bg-accent1 md:hidden"></div>
+                            <div className="absolute left-1.5 top-6 bottom-[-36px] w-px bg-accent1 md:hidden"></div>
                           )}
                           
                           {/* Vertical line for desktop */}

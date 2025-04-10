@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import SocialLinks from '../shared/SocialLinks';
-import ThemeToggle from '../shared/ThemeToggle';
 import SciFiElements from '../shared/SciFiElements';
 
 const Navbar = () => {
@@ -78,9 +77,6 @@ const Navbar = () => {
               </Link>
             ))}
           </nav>
-
-          {/* Theme Toggle */}
-          <ThemeToggle />
           
           {/* Mobile Menu Button */}
           <button

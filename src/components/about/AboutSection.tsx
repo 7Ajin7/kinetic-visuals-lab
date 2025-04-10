@@ -76,12 +76,10 @@ const AboutSection: React.FC = () => {
                   {/* Profile image */}
                   <div className="relative w-full h-full">
                     <img 
-                      src="/lovable-uploads/1daa91b8-542c-45fe-897f-156d75c0a93e.png" 
+                      src="/lovable-uploads/11116b2c-9b50-46c3-9c89-1fd904a943cb.png" 
                       alt="Ajin Abraham Daniel" 
                       className="w-full h-full object-cover"
                     />
-                    {/* Scan line effect */}
-                    <div className="absolute inset-0 sci-fi-scanner"></div>
                   </div>
                 </div>
               </div>
