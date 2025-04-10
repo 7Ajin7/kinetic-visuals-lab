@@ -126,18 +126,20 @@ const About = () => {
                         </div>
                         
                         <div className="md:col-span-4 relative">
+                          {/* Timeline dot */}
                           <div className="absolute left-0 md:left-auto md:right-full top-1 md:mr-8 w-3 h-3 rounded-full bg-black border border-accent1"></div>
+                          
                           <h3 className="text-xl font-semibold mb-2">{item.role}</h3>
                           <p className="text-muted-foreground">{item.description}</p>
                           
                           {/* Connect dots with line */}
                           {index < timelineItems.length - 1 && (
-                            <div className="absolute left-1.5 top-6 bottom-[-36px] w-px bg-accent1 md:hidden"></div>
+                            <div className="absolute left-1.5 top-6 bottom-[-36px] w-px bg-accent1/80 md:hidden"></div>
                           )}
                           
                           {/* Vertical line for desktop */}
                           {index < timelineItems.length - 1 && (
-                            <div className="hidden md:block absolute right-full top-6 bottom-[-48px] w-px bg-accent1 md:mr-9.5"></div>
+                            <div className="hidden md:block absolute right-full top-6 bottom-[-48px] w-px bg-accent1/80 md:mr-9.5"></div>
                           )}
                         </div>
                       </div>
