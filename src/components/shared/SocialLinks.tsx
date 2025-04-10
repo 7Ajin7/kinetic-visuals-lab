@@ -23,9 +23,12 @@ const ArtstationIcon = ({ size = 20 }) => {
 const BehanceIcon = ({ size = 20 }) => {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 9h6c.65 0 1.26.32 1.62.84A2.5 2.5 0 0 1 7.5 14H3zm0 5h7a2.5 2.5 0 0 0 0-5" />
-      <path d="M16 9h6a2.5 2.5 0 0 1 0 5h-6M16 14h4a2.5 2.5 0 0 0 2.5-2.5" />
-      <path d="M14 8h7m-7 8h7" />
+      <path d="M7.5 6.75h4.5a3.75 3.75 0 0 1 0 7.5h-4.5V6.75Z" />
+      <path d="M7.5 10.5h5.63" />
+      <path d="M16.5 15.75h-4.5" />
+      <path d="M16.5 17.25c.82-.75 1.5-1.88 1.5-3a3.75 3.75 0 0 0-3.75-3.75h-4.5v10.5h4.5a3.75 3.75 0 0 0 2.25-6.75Z" />
+      <path d="M16.5 6.75h-3" />
+      <path d="M19.5 6.75h-3" />
     </svg>
   );
 };

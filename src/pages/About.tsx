@@ -4,6 +4,7 @@ import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import CustomCursor from '../components/shared/CustomCursor';
 import AnimatedBackground from '../components/shared/AnimatedBackground';
+import SoftwareExpertise from '../components/shared/SoftwareExpertise';
 
 const About = () => {
   useEffect(() => {
@@ -75,84 +76,42 @@ const About = () => {
                   About <span className="text-gradient-1">Me</span>
                 </h1>
                 
-                <div className="space-y-6 text-muted-foreground reveal" style={{ transitionDelay: '200ms' }}>
-                  <p className="text-lg">
-                    I'm Ajin Abraham Daniel, a passionate 3D artist and motion designer with a keen eye for detail and a love for creating immersive visual experiences. My work combines technical precision with artistic expression to bring ideas to life through movement and form.
-                  </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 reveal" style={{ transitionDelay: '100ms' }}>
+                  <div className="md:col-span-1">
+                    <div className="relative aspect-[4/5] overflow-hidden border border-white/10 glass-card">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="relative w-full h-full">
+                          <img 
+                            src="/lovable-uploads/1daa91b8-542c-45fe-897f-156d75c0a93e.png" 
+                            alt="Ajin Abraham Daniel" 
+                            className="w-full h-full object-cover"
+                          />
+                          {/* Scan line effect */}
+                          <div className="absolute inset-0 sci-fi-scanner"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   
-                  <p>
-                    With expertise in industry-standard tools and a background in both commercial and artistic projects, I specialize in creating compelling visual narratives that engage and inspire audiences. My approach is collaborative, detail-oriented, and focused on delivering high-quality results that exceed expectations.
-                  </p>
-                  
-                  <p>
-                    Whether it's crafting stunning 3D environments, designing fluid animations, or producing eye-catching visual effects, I bring creativity and technical skill to every project. I'm constantly exploring new techniques and pushing the boundaries of what's possible in digital art and motion design.
-                  </p>
+                  <div className="md:col-span-2">
+                    <div className="space-y-6 text-muted-foreground">
+                      <p className="text-lg">
+                        I'm Ajin Abraham Daniel, a passionate 3D artist and motion designer with a keen eye for detail and a love for creating immersive visual experiences. My work combines technical precision with artistic expression to bring ideas to life through movement and form.
+                      </p>
+                      
+                      <p>
+                        With expertise in industry-standard tools and a background in both commercial and artistic projects, I specialize in creating compelling visual narratives that engage and inspire audiences. My approach is collaborative, detail-oriented, and focused on delivering high-quality results that exceed expectations.
+                      </p>
+                      
+                      <p>
+                        Whether it's crafting stunning 3D environments, designing fluid animations, or producing eye-catching visual effects, I bring creativity and technical skill to every project. I'm constantly exploring new techniques and pushing the boundaries of what's possible in digital art and motion design.
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 
                 <div className="mt-16 reveal" style={{ transitionDelay: '400ms' }}>
-                  <h2 className="text-2xl font-bold mb-8">Technical Expertise</h2>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="glass-card p-6">
-                      <h3 className="text-xl font-semibold mb-4">Software</h3>
-                      <ul className="space-y-2">
-                        <li className="flex items-center">
-                          <div className="w-2 h-2 bg-accent1 rounded-full mr-2"></div>
-                          <span>Blender (Advanced)</span>
-                        </li>
-                        <li className="flex items-center">
-                          <div className="w-2 h-2 bg-accent1 rounded-full mr-2"></div>
-                          <span>Adobe After Effects (Advanced)</span>
-                        </li>
-                        <li className="flex items-center">
-                          <div className="w-2 h-2 bg-accent1 rounded-full mr-2"></div>
-                          <span>Cinema 4D (Advanced)</span>
-                        </li>
-                        <li className="flex items-center">
-                          <div className="w-2 h-2 bg-accent1 rounded-full mr-2"></div>
-                          <span>Maya (Intermediate)</span>
-                        </li>
-                        <li className="flex items-center">
-                          <div className="w-2 h-2 bg-accent1 rounded-full mr-2"></div>
-                          <span>3Ds Max (Intermediate)</span>
-                        </li>
-                        <li className="flex items-center">
-                          <div className="w-2 h-2 bg-accent1 rounded-full mr-2"></div>
-                          <span>Embergen (Intermediate)</span>
-                        </li>
-                      </ul>
-                    </div>
-                    
-                    <div className="glass-card p-6">
-                      <h3 className="text-xl font-semibold mb-4">Skills</h3>
-                      <ul className="space-y-2">
-                        <li className="flex items-center">
-                          <div className="w-2 h-2 bg-accent2 rounded-full mr-2"></div>
-                          <span>3D Modeling & Texturing</span>
-                        </li>
-                        <li className="flex items-center">
-                          <div className="w-2 h-2 bg-accent2 rounded-full mr-2"></div>
-                          <span>Animation & Motion Graphics</span>
-                        </li>
-                        <li className="flex items-center">
-                          <div className="w-2 h-2 bg-accent2 rounded-full mr-2"></div>
-                          <span>Visual Effects (VFX)</span>
-                        </li>
-                        <li className="flex items-center">
-                          <div className="w-2 h-2 bg-accent2 rounded-full mr-2"></div>
-                          <span>Lighting & Rendering</span>
-                        </li>
-                        <li className="flex items-center">
-                          <div className="w-2 h-2 bg-accent2 rounded-full mr-2"></div>
-                          <span>Particle Systems</span>
-                        </li>
-                        <li className="flex items-center">
-                          <div className="w-2 h-2 bg-accent2 rounded-full mr-2"></div>
-                          <span>Compositing</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                  <SoftwareExpertise />
                 </div>
                 
                 <div className="mt-16 reveal" style={{ transitionDelay: '600ms' }}>
@@ -169,13 +128,18 @@ const About = () => {
                         </div>
                         
                         <div className="md:col-span-4">
-                          <div className="absolute left-0 md:left-auto md:right-full top-1 md:mr-8 w-3 h-3 rounded-full bg-accent1"></div>
+                          <div className="absolute left-0 md:left-auto md:right-full top-1 md:mr-8 w-3 h-3 rounded-full bg-black border border-accent1"></div>
                           <h3 className="text-xl font-semibold mb-2">{item.role}</h3>
                           <p className="text-muted-foreground">{item.description}</p>
                           
                           {/* Connect dots with line except for the last item */}
                           {index < timelineItems.length - 1 && (
-                            <div className="absolute left-1.5 top-6 bottom-0 w-px bg-accent1/30 md:hidden"></div>
+                            <div className="absolute left-1.5 top-6 bottom-0 w-px bg-accent1 md:hidden"></div>
+                          )}
+                          
+                          {/* Vertical line for desktop */}
+                          {index < timelineItems.length - 1 && (
+                            <div className="hidden md:block absolute right-full top-6 bottom-[-48px] w-px bg-accent1 md:mr-9.5"></div>
                           )}
                         </div>
                       </div>
