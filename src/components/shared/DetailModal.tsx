@@ -61,8 +61,7 @@ const DetailModal: React.FC<DetailModalProps> = ({
       <div 
         ref={modalRef}
         className={cn(
-          "relative bg-background/95 border border-accent1/20 rounded-sm overflow-hidden w-full max-w-6xl max-h-[90vh] origin-center",
-          "animate-[scale-in_0.4s_ease-out_forwards]", // Custom animation for sci-fi effect
+          "relative bg-background/95 border border-accent1/20 overflow-hidden w-full max-w-6xl max-h-[90vh] origin-center z-[101]",
           variant === 'product' ? 'h-[80vh]' : 'h-[85vh]'
         )}
         style={{
@@ -76,7 +75,7 @@ const DetailModal: React.FC<DetailModalProps> = ({
         
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 bg-white/5 hover:bg-white/10 z-10 border border-accent1/20 hover:border-accent1/50 hover-trigger transition-colors rounded-sm"
+          className="absolute top-4 right-4 p-2 bg-white/5 hover:bg-white/10 z-[102] border border-accent1/20 hover:border-accent1/50 hover-trigger transition-colors"
           aria-label="Close modal"
         >
           <X size={18} />
@@ -92,18 +91,20 @@ const DetailModal: React.FC<DetailModalProps> = ({
         </div>
       </div>
 
-      <style jsx global>{`
-        @keyframes scaleInY {
-          from {
-            transform: scaleY(0);
-            opacity: 0;
+      <style>
+        {`
+          @keyframes scaleInY {
+            from {
+              transform: scaleY(0);
+              opacity: 0;
+            }
+            to {
+              transform: scaleY(1);
+              opacity: 1;
+            }
           }
-          to {
-            transform: scaleY(1);
-            opacity: 1;
-          }
-        }
-      `}</style>
+        `}
+      </style>
     </div>
   );
 };

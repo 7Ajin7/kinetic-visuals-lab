@@ -227,7 +227,7 @@ const Shop = () => {
                     {featuredProducts.map((product) => (
                       <div 
                         key={product.id} 
-                        className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-sm overflow-hidden hover-trigger transition-all duration-300 hover:shadow-lg hover:shadow-accent1/5 hover:-translate-y-1 cursor-pointer"
+                        className="bg-white/5 backdrop-blur-sm border border-white/10 overflow-hidden hover-trigger transition-all duration-300 hover:shadow-lg hover:shadow-accent1/5 hover:-translate-y-1 cursor-pointer"
                         onClick={() => setSelectedProduct(product)}
                       >
                         <div className="relative">
@@ -238,12 +238,12 @@ const Shop = () => {
                               className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                             />
                           </div>
-                          <div className="absolute top-3 right-3 bg-accent1 text-white px-2 py-1 text-xs font-medium rounded-sm">
+                          <div className="absolute top-3 right-3 bg-accent1 text-white px-2 py-1 text-xs font-medium">
                             Featured
                           </div>
                           <div className="absolute top-3 left-3 flex space-x-1">
-                            <div className="size-2 rounded-full bg-accent1 animate-pulse-slow"></div>
-                            <div className="size-2 rounded-full bg-accent2 animate-pulse-slow" style={{ animationDelay: '0.5s' }}></div>
+                            <div className="size-2 bg-accent1 animate-pulse-slow"></div>
+                            <div className="size-2 bg-accent2 animate-pulse-slow" style={{ animationDelay: '0.5s' }}></div>
                           </div>
                         </div>
                         <div className="p-5">
@@ -259,7 +259,7 @@ const Shop = () => {
                                 e.stopPropagation();
                                 handleAddToCart(product);
                               }}
-                              className="flex items-center space-x-1 px-3 py-1.5 bg-accent1 hover:bg-accent1/80 text-white rounded-sm text-sm transition-colors"
+                              className="flex items-center space-x-1 px-3 py-1.5 bg-accent1 hover:bg-accent1/80 text-white transition-colors"
                             >
                               <ShoppingCart size={16} />
                               <span>Buy Now</span>
@@ -279,7 +279,7 @@ const Shop = () => {
                       key={category}
                       onClick={() => setFilter(category)}
                       className={cn(
-                        "px-4 py-2 rounded-sm text-sm transition-all duration-300 border",
+                        "px-4 py-2 text-sm transition-all duration-300 border",
                         filter === category
                           ? "bg-accent1 text-white border-accent1"
                           : "bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-white border-white/10"
@@ -296,7 +296,7 @@ const Shop = () => {
                     placeholder="Search products..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-sm w-full md:w-60 focus:ring-1 focus:ring-accent1 focus:border-accent1 outline-none transition-all"
+                    className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 w-full md:w-60 focus:ring-1 focus:ring-accent1 focus:border-accent1 outline-none transition-all"
                   />
                   <Search size={18} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
                 </div>
@@ -306,7 +306,7 @@ const Shop = () => {
                 {filteredProducts.map((product) => (
                   <div 
                     key={product.id} 
-                    className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-sm overflow-hidden hover-trigger transition-all duration-300 hover:shadow-lg hover:shadow-accent1/5 hover:-translate-y-1 cursor-pointer"
+                    className="bg-white/5 backdrop-blur-sm border border-white/10 overflow-hidden hover-trigger transition-all duration-300 hover:shadow-lg hover:shadow-accent1/5 hover:-translate-y-1 cursor-pointer"
                     onClick={() => setSelectedProduct(product)}
                   >
                     <div className="aspect-[3/2] overflow-hidden">
@@ -329,7 +329,7 @@ const Shop = () => {
                             e.stopPropagation();
                             handleAddToCart(product);
                           }}
-                          className="flex items-center space-x-1 px-3 py-1.5 bg-accent1 hover:bg-accent1/80 text-white rounded-sm text-sm transition-colors"
+                          className="flex items-center space-x-1 px-3 py-1.5 bg-accent1 hover:bg-accent1/80 text-white transition-colors"
                         >
                           <ShoppingCart size={16} />
                           <span>Buy Now</span>
@@ -341,7 +341,7 @@ const Shop = () => {
               </div>
               
               {filteredProducts.length === 0 && (
-                <div className="text-center py-12 border border-dashed border-white/10 rounded-sm">
+                <div className="text-center py-12 border border-dashed border-white/10">
                   <p className="text-muted-foreground">No products found matching your criteria.</p>
                 </div>
               )}
@@ -365,7 +365,7 @@ const Shop = () => {
                   <img 
                     src={image} 
                     alt={`${selectedProduct.name} - Image ${idx + 1}`}
-                    className="w-full rounded-sm border border-accent1/10"
+                    className="w-full border border-accent1/10"
                   />
                   <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm px-2 py-1 text-xs font-mono">
                     {idx + 1}/{(selectedProduct.images?.length || 1)}
@@ -377,7 +377,7 @@ const Shop = () => {
           
           <div className="p-6 overflow-y-auto scrollbar-none">
             <div className="mb-1 flex items-center text-xs font-mono text-accent1">
-              <div className="size-2 rounded-full bg-accent1 mr-2"></div>
+              <div className="size-2 bg-accent1 mr-2"></div>
               <span>{selectedProduct.category}</span>
             </div>
             
@@ -390,12 +390,12 @@ const Shop = () => {
                 ${selectedProduct.price}
               </div>
               
-              <button className="w-full mb-3 py-2.5 bg-accent1 hover:bg-accent1/90 transition-colors text-white rounded-sm flex items-center justify-center">
+              <button className="w-full mb-3 py-2.5 bg-accent1 hover:bg-accent1/90 transition-colors text-white flex items-center justify-center">
                 <ShoppingCart size={18} className="mr-2" />
                 Add to Cart
               </button>
               
-              <button className="w-full py-2.5 border border-white/20 hover:border-accent1/50 transition-colors rounded-sm flex items-center justify-center">
+              <button className="w-full py-2.5 border border-white/20 hover:border-accent1/50 transition-colors flex items-center justify-center">
                 <Download size={18} className="mr-2" />
                 Instant Download
               </button>
@@ -429,7 +429,7 @@ const Shop = () => {
                   <ul className="text-sm text-muted-foreground">
                     {selectedProduct.compatibility?.map((item, idx) => (
                       <li key={idx} className="flex items-center">
-                        <span className="block w-1 h-1 rounded-full bg-accent1 mr-2"></span>
+                        <span className="block w-1 h-1 bg-accent1 mr-2"></span>
                         {item}
                       </li>
                     ))}

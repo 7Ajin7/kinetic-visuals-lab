@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { X, Eye, AlertTriangle, CornerDownRight } from 'lucide-react';
@@ -25,7 +24,6 @@ const Works = () => {
   const [filter, setFilter] = useState('all');
   const [selectedWork, setSelectedWork] = useState<WorkItem | null>(null);
   
-  // Sample work items
   const workItems: WorkItem[] = [
     {
       id: 1,
@@ -184,7 +182,7 @@ const Works = () => {
                     key={category}
                     onClick={() => setFilter(category)}
                     className={cn(
-                      "px-4 py-2 rounded-sm text-sm transition-all duration-300 border",
+                      "px-4 py-2 text-sm transition-all duration-300 border",
                       filter === category
                         ? "bg-accent1 text-white border-accent1"
                         : "bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-white border-white/10"
@@ -199,7 +197,7 @@ const Works = () => {
                 {filteredItems.map((item) => (
                   <div 
                     key={item.id} 
-                    className="group relative bg-black/20 rounded-sm overflow-hidden border border-white/5 hover-trigger cursor-pointer"
+                    className="group relative bg-black/20 overflow-hidden border border-white/5 hover-trigger cursor-pointer"
                     onClick={() => setSelectedWork(item)}
                   >
                     <div className="aspect-[4/3] overflow-hidden">
@@ -214,22 +212,22 @@ const Works = () => {
                       <h3 className="text-xl font-bold">{item.title}</h3>
                       <div className="flex flex-wrap gap-2 mt-3">
                         {item.tools.map((tool) => (
-                          <span key={tool} className="text-xs bg-white/10 px-2 py-1 rounded-sm">
+                          <span key={tool} className="text-xs bg-white/10 px-2 py-1">
                             {tool}
                           </span>
                         ))}
                       </div>
                       
                       <button 
-                        className="mt-4 px-4 py-2 border border-accent1/50 bg-black/50 text-white rounded-sm flex items-center justify-center hover:bg-accent1/20 transition-colors"
+                        className="mt-4 px-4 py-2 border border-accent1/50 bg-black/50 text-white flex items-center justify-center hover:bg-accent1/20 transition-colors"
                       >
                         <Eye size={16} className="mr-2" /> View Project
                       </button>
                     </div>
                     
                     <div className="absolute top-4 left-4 flex space-x-1">
-                      <div className="size-2 rounded-full bg-accent1 animate-pulse-slow"></div>
-                      <div className="size-2 rounded-full bg-accent2 animate-pulse-slow" style={{ animationDelay: '0.5s' }}></div>
+                      <div className="size-2 bg-accent1 animate-pulse-slow"></div>
+                      <div className="size-2 bg-accent2 animate-pulse-slow" style={{ animationDelay: '0.5s' }}></div>
                     </div>
                   </div>
                 ))}
@@ -250,7 +248,7 @@ const Works = () => {
           {/* Left Side - Images/Videos */}
           <div className="h-full overflow-auto scrollbar-none border-r border-accent1/10 p-6">
             {selectedWork.videoUrl ? (
-              <div className="aspect-video overflow-hidden rounded-sm mb-6">
+              <div className="aspect-video overflow-hidden mb-6">
                 <iframe 
                   className="w-full h-full"
                   src={selectedWork.videoUrl} 
@@ -267,7 +265,7 @@ const Works = () => {
                     <img 
                       src={image} 
                       alt={`${selectedWork.title} - Image ${idx + 1}`}
-                      className="w-full rounded-sm border border-accent1/10"
+                      className="w-full border border-accent1/10"
                     />
                     <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm px-2 py-1 text-xs font-mono">
                       {idx + 1}/{selectedWork.images?.length}
@@ -281,7 +279,7 @@ const Works = () => {
           {/* Right Side - Info */}
           <div className="p-6 overflow-y-auto scrollbar-none">
             <div className="mb-1 flex items-center text-xs font-mono text-accent1">
-              <div className="size-2 rounded-full bg-accent1 mr-2"></div>
+              <div className="size-2 bg-accent1 mr-2"></div>
               <span>{selectedWork.category}</span>
             </div>
             
@@ -308,7 +306,7 @@ const Works = () => {
                 {selectedWork.tools.map((tool) => (
                   <span 
                     key={tool} 
-                    className="px-3 py-1 bg-white/5 border border-accent1/20 rounded-sm text-sm"
+                    className="px-3 py-1 bg-white/5 border border-accent1/20 text-sm"
                   >
                     {tool}
                   </span>

@@ -45,7 +45,7 @@ const ThemeToggle = () => {
     <button
       onClick={toggleTheme}
       className={cn(
-        "p-2 rounded-sm border transition-all duration-300 hover-trigger z-10",
+        "p-2 border transition-all duration-300 hover-trigger z-10",
         isDark 
           ? "bg-white/5 border-white/10 hover:bg-white/10" 
           : "bg-black/5 border-black/10 hover:bg-black/10"

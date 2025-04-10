@@ -29,7 +29,12 @@
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
     --ring: 240 5% 64.9%;
-    --radius: 0.125rem; /* Changed to make buttons more boxy with very slight rounding */
+    --radius: 0; /* Changed to make buttons sharp with no rounded corners */
+    
+    /* Custom colors for light mode */
+    --accent1: 356 100% 65%;
+    --accent2: 180 100% 50%;
+    --accent3: 259 100% 65%;
   }
 
   .dark {
@@ -53,6 +58,11 @@
     --border: 0 0% 15%;
     --input: 0 0% 15%;
     --ring: 0 0% 83.9%;
+    
+    /* Custom colors for dark mode */
+    --accent1: 356 100% 65%;
+    --accent2: 180 100% 50%;
+    --accent3: 259 100% 65%;
   }
 }
 
@@ -62,7 +72,7 @@
   }
   
   body {
-    @apply bg-background text-foreground antialiased overflow-x-hidden dark;
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
 
@@ -84,7 +94,7 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-accent1/50 rounded-full;
+    @apply bg-accent1/50;
   }
 
   ::-webkit-scrollbar-thumb:hover {
@@ -190,13 +200,13 @@
 
 /* Custom cursor */
 .cursor {
-  @apply fixed pointer-events-none z-[999] w-6 h-6 rounded-full mix-blend-difference bg-white;
+  @apply fixed pointer-events-none z-[999] w-6 h-6 mix-blend-difference bg-white;
   transform: translate(-50%, -50%);
   transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
 }
 
 .cursor-follower {
-  @apply fixed pointer-events-none z-[998] w-10 h-10 rounded-full mix-blend-difference bg-accent1/30 opacity-50;
+  @apply fixed pointer-events-none z-[998] w-10 h-10 mix-blend-difference bg-accent1/30 opacity-50;
   transform: translate(-50%, -50%);
   transition: transform 0.3s ease, width 0.2s ease, height 0.2s ease;
 }
@@ -256,7 +266,7 @@
 }
 
 .hud-dot {
-  @apply size-1 rounded-full bg-accent1;
+  @apply size-1 bg-accent1;
   animation: blink 2s infinite;
   
   @keyframes blink {
@@ -338,6 +348,18 @@
   }
 }
 
+/* Scale in Y animation for modal */
+@keyframes scaleInY {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
 /* Fade in animation */
 .animate-fade-in {
   animation: fadeIn 0.3s ease forwards;
@@ -350,4 +372,58 @@
   to {
     opacity: 1;
   }
+}
+
+/* Light mode and dark mode specific styles */
+.dark .text-gradient-1 {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-accent1 via-white to-accent2;
+}
+
+.dark .border-white\\/5 {
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark .bg-white\\/5 {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Light mode overrides */
+:root:not(.dark) .text-gradient-1 {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-accent1 via-black to-accent2;
+}
+
+:root:not(.dark) .border-white\\/5 {
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+:root:not(.dark) .bg-white\\/5 {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+:root:not(.dark) .bg-white\\/10 {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+:root:not(.dark) .bg-black\\/20 {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+:root:not(.dark) .border-white\\/10 {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+:root:not(.dark) .text-white {
+  color: #000;
+}
+
+:root:not(.dark) .text-black {
+  color: #fff;
+}
+
+:root:not(.dark) .bg-black\\/80 {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+:root:not(.dark) .bg-background\\/95 {
+  background-color: rgba(255, 255, 255, 0.95);
 }

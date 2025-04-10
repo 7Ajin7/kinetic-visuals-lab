@@ -83,7 +83,7 @@ const ShopSection = () => {
             {products.map(product => (
               <div 
                 key={product.id}
-                className="group bg-black/20 border border-white/5 rounded-sm overflow-hidden flex flex-col hover-trigger"
+                className="group bg-black/20 border border-white/5 overflow-hidden flex flex-col hover-trigger"
               >
                 <div 
                   className="aspect-[4/3] overflow-hidden cursor-pointer"
@@ -103,7 +103,7 @@ const ShopSection = () => {
                     <div className="text-xl font-bold">${product.price}</div>
                     <Button 
                       variant="default" 
-                      className="rounded-sm flex items-center gap-1 bg-accent2 hover:bg-accent2/80"
+                      className="flex items-center gap-1 bg-accent2 hover:bg-accent2/80"
                       onClick={() => window.open("https://gumroad.com", "_blank")}
                     >
                       <ShoppingCart size={16} />
@@ -131,7 +131,7 @@ const ShopSection = () => {
                 <img 
                   src={image} 
                   alt={`${selectedProduct.name} - image ${index + 1}`}
-                  className="w-full h-auto rounded-sm border border-white/10"
+                  className="w-full h-auto border border-white/10"
                 />
               </div>
             ))}
@@ -153,7 +153,7 @@ const ShopSection = () => {
                 <span className="text-2xl font-bold">${selectedProduct.price}</span>
                 <Button 
                   variant="default" 
-                  className="rounded-sm flex items-center gap-1 bg-accent2 hover:bg-accent2/80"
+                  className="flex items-center gap-1 bg-accent2 hover:bg-accent2/80"
                   onClick={() => window.open("https://gumroad.com", "_blank")}
                 >
                   <ShoppingCart size={16} />
