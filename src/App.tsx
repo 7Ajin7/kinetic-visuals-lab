@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -20,19 +20,24 @@ const queryClient = new QueryClient();
 function ScrollToTop() {
   const { pathname } = useLocation();
 
-  React.useEffect(() => {
-    // Scroll to top of the page on route change
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "instant" // Use "instant" for immediate scroll without animation
-    });
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, [pathname]);
 
   return null;
 }
 
 const App = () => {
+  // Check for saved theme preference or default to dark
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>

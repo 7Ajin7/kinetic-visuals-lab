@@ -73,13 +73,20 @@ const AboutSection: React.FC = () => {
             <div className="md:col-span-1 reveal" style={{ transitionDelay: '200ms' }}>
               <div className="relative aspect-[4/5] overflow-hidden border border-white/10 glass-card">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Profile image */}
+                  {/* Profile image with sci-fi frame */}
                   <div className="relative w-full h-full">
+                    <div className="absolute inset-0 bg-gradient-to-b from-accent1/5 to-accent2/5"></div>
+                    <div className="absolute top-2 left-2 w-12 h-12 border-t-2 border-l-2 border-accent1"></div>
+                    <div className="absolute top-2 right-2 w-12 h-12 border-t-2 border-r-2 border-accent2"></div>
+                    <div className="absolute bottom-2 left-2 w-12 h-12 border-b-2 border-l-2 border-accent2"></div>
+                    <div className="absolute bottom-2 right-2 w-12 h-12 border-b-2 border-r-2 border-accent1"></div>
                     <img 
-                      src="/lovable-uploads/11116b2c-9b50-46c3-9c89-1fd904a943cb.png" 
+                      src="/lovable-uploads/c2f7c402-d4ea-4864-87c1-c5494757d6f4.png" 
                       alt="Ajin Abraham Daniel" 
                       className="w-full h-full object-cover"
                     />
+                    {/* Scan line effect */}
+                    <div className="absolute inset-0 sci-fi-scanner"></div>
                   </div>
                 </div>
               </div>
@@ -114,7 +121,7 @@ const AboutSection: React.FC = () => {
               <div className="space-y-6">
                 {timelineItems.map((item, index) => (
                   <div key={index} className="relative pl-6 border-l border-accent1/30">
-                    <div className="absolute left-0 top-0 transform -translate-x-1/2 w-3 h-3 rounded-full bg-black border border-accent1"></div>
+                    <div className="absolute left-0 top-0 transform -translate-x-1/2 w-3 h-3 bg-black border border-accent1"></div>
                     <div className="font-medium">{item.position}</div>
                     <div className="text-sm text-muted-foreground">{item.role} • {item.year}</div>
                     
@@ -126,7 +133,7 @@ const AboutSection: React.FC = () => {
                 ))}
                 
                 <div className="relative pl-6">
-                  <div className="absolute left-0 top-0 transform -translate-x-1/2 w-3 h-3 rounded-full bg-black border border-accent1"></div>
+                  <div className="absolute left-0 top-0 transform -translate-x-1/2 w-3 h-3 bg-black border border-accent1"></div>
                 </div>
               </div>
             </div>

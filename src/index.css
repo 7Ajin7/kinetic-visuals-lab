@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
@@ -8,7 +9,36 @@
 
 @layer base {
   :root {
-    /* Only dark mode variables - light mode removed */
+    /* Light mode */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 0 0% 0%; /* Pure black */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5% 64.9%;
+    --radius: 0; /* Changed to make buttons sharp with no rounded corners */
+    
+    /* Custom colors for light mode */
+    --accent1: 356 100% 65%;
+    --accent2: 180 100% 50%;
+    --accent3: 259 100% 65%;
+  }
+
+  .dark {
+    /* Dark mode - updated with black and white focused scheme */
     --background: 0 0% 0%; /* Pure black */
     --foreground: 0 0% 100%; /* Pure white */
     --card: 0 0% 3%;
@@ -29,16 +59,10 @@
     --input: 0 0% 15%;
     --ring: 0 0% 83.9%;
     
-    /* Custom colors */
+    /* Custom colors for dark mode */
     --accent1: 356 100% 65%;
     --accent2: 180 100% 50%;
     --accent3: 259 100% 65%;
-  }
-
-  /* Instead of force applying dark mode with @apply dark, 
-     we'll use the default black theme variables */
-  html {
-    @apply scroll-smooth;
   }
 }
 
@@ -50,6 +74,10 @@
   body {
     @apply bg-background text-foreground antialiased overflow-x-hidden;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+
+  html {
+    @apply scroll-smooth;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -153,24 +181,20 @@
   
   .button-sci-fi {
     @apply relative overflow-hidden;
-  }
-  
-  .button-sci-fi::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-accent1/10 to-accent2/10 opacity-0 transition-opacity duration-300;
-  }
-  
-  .button-sci-fi:hover::before {
-    @apply opacity-100;
+    
+    &::before {
+      content: '';
+      @apply absolute inset-0 bg-gradient-to-r from-accent1/10 to-accent2/10 opacity-0 transition-opacity duration-300;
+    }
+    
+    &:hover::before {
+      @apply opacity-100;
+    }
   }
   
   /* Modal animation */
   .animate-scale-in {
     animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-  
-  .animate-scale-in-y {
-    animation: scaleInY 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 }
 
@@ -219,54 +243,54 @@
 /* Sci-fi elements */
 .sci-fi-scanner {
   @apply absolute inset-0 pointer-events-none overflow-hidden;
-}
-
-.sci-fi-scanner::before {
-  content: '';
-  @apply absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent1 to-transparent;
-  animation: scan 2s infinite linear;
-}
-
-@keyframes scan {
-  0% {
-    transform: translateY(0);
-    opacity: 0.5;
+  
+  &::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent1 to-transparent;
+    animation: scan 2s infinite linear;
   }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh);
-    opacity: 0.5;
+  
+  @keyframes scan {
+    0% {
+      transform: translateY(0);
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0.5;
+    }
   }
 }
 
 .hud-dot {
   @apply size-1 bg-accent1;
   animation: blink 2s infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
 }
 
 /* Sci-fi corners */
 .sci-fi-corners {
   @apply relative;
-}
-
-.sci-fi-corners::before, .sci-fi-corners::after {
-  content: '';
-  @apply absolute w-3 h-3;
-}
-
-.sci-fi-corners::before {
-  @apply top-0 left-0 border-t-2 border-l-2 border-accent1;
-}
-
-.sci-fi-corners::after {
-  @apply bottom-0 right-0 border-b-2 border-r-2 border-accent1;
+  
+  &::before, &::after {
+    content: '';
+    @apply absolute w-3 h-3;
+  }
+  
+  &::before {
+    @apply top-0 left-0 border-t-2 border-l-2 border-accent1;
+  }
+  
+  &::after {
+    @apply bottom-0 right-0 border-b-2 border-r-2 border-accent1;
+  }
 }
 
 /* Animation for UI scan lines */
@@ -350,22 +374,56 @@
   }
 }
 
-/* Mobile optimizations */
-@media (max-width: 768px) {
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  h1 {
-    font-size: 2rem;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-  }
-  
-  .hidden-mobile {
-    display: none;
-  }
+/* Light mode and dark mode specific styles */
+.dark .text-gradient-1 {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-accent1 via-white to-accent2;
+}
+
+.dark .border-white\/5 {
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark .bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Light mode overrides */
+:root:not(.dark) .text-gradient-1 {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-accent1 via-black to-accent2;
+}
+
+:root:not(.dark) .border-white\/5 {
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+:root:not(.dark) .bg-white\/5 {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+:root:not(.dark) .bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+:root:not(.dark) .bg-black\/20 {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+:root:not(.dark) .border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+:root:not(.dark) .text-white {
+  color: #000;
+}
+
+:root:not(.dark) .text-black {
+  color: #fff;
+}
+
+:root:not(.dark) .bg-black\/80 {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+:root:not(.dark) .bg-background\/95 {
+  background-color: rgba(255, 255, 255, 0.95);
 }

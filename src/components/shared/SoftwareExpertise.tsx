@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 
@@ -15,7 +14,6 @@ const SoftwareExpertise = () => {
     { name: 'Cinema 4D', category: '3d' },
     { name: 'Maya', category: '3d' },
     { name: '3Ds Max', category: '3d' },
-    { name: 'ZBrush', category: '3d' },
     { name: 'Embergen', category: 'vfx' },
     { name: 'Substance Painter', category: '3d' },
     { name: 'Photoshop', category: 'design' },
@@ -48,7 +46,7 @@ const SoftwareExpertise = () => {
           <div
             key={item.name}
             className={cn(
-              "border px-3 py-1.5 bg-white/5 hover:bg-white/10",
+              "border rounded-sm px-3 py-1.5 bg-white/5 hover:bg-white/10",
               "transition-all duration-300 hover-trigger",
               getCategoryColor(item.category)
             )}

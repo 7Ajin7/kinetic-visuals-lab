@@ -241,6 +241,7 @@ const Works = () => {
           title={selectedWork.title}
           variant="project"
         >
+          {/* Left Side - Images/Videos */}
           <div className="h-full overflow-auto scrollbar-none border-r border-accent1/10 p-6">
             {selectedWork.videoUrl ? (
               <div className="aspect-video overflow-hidden mb-6">
@@ -271,6 +272,7 @@ const Works = () => {
             )}
           </div>
           
+          {/* Right Side - Info */}
           <div className="p-6 overflow-y-auto scrollbar-none">
             <div className="mb-1 flex items-center text-xs font-mono text-accent1">
               <div className="size-2 bg-accent1 mr-2"></div>
