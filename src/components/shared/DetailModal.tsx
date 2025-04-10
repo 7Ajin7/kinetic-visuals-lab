@@ -90,21 +90,6 @@ const DetailModal: React.FC<DetailModalProps> = ({
           {children}
         </div>
       </div>
-
-      <style>
-        {`
-          @keyframes scaleInY {
-            from {
-              transform: scaleY(0);
-              opacity: 0;
-            }
-            to {
-              transform: scaleY(1);
-              opacity: 1;
-            }
-          }
-        `}
-      </style>
     </div>
   );
 };

@@ -7,7 +7,6 @@ import CustomCursor from '../components/shared/CustomCursor';
 import AnimatedBackground from '../components/shared/AnimatedBackground';
 import DetailModal from '../components/shared/DetailModal';
 import SciFiElements from '../components/shared/SciFiElements';
-import ThemeToggle from '../components/shared/ThemeToggle';
 
 interface WorkItem {
   id: number;
@@ -163,17 +162,14 @@ const Works = () => {
           <AnimatedBackground />
           <div className="relative z-10 pt-32 pb-16">
             <div className="container px-4">
-              <div className="flex justify-between items-center mb-12">
-                <div>
-                  <h1 className="text-4xl md:text-5xl font-bold mb-4 reveal">
-                    My <span className="text-gradient-1">Works</span>
-                  </h1>
-                  
-                  <p className="text-muted-foreground max-w-2xl mb-12 reveal" style={{ transitionDelay: '200ms' }}>
-                    Explore my portfolio of projects spanning 3D art, motion graphics, visual effects, and commercial work. Each piece represents a unique creative challenge and technical achievement.
-                  </p>
-                </div>
-                <ThemeToggle />
+              <div className="mb-12">
+                <h1 className="text-4xl md:text-5xl font-bold mb-4 reveal">
+                  My <span className="text-gradient-1">Works</span>
+                </h1>
+                
+                <p className="text-muted-foreground max-w-2xl mb-12 reveal" style={{ transitionDelay: '200ms' }}>
+                  Explore my portfolio of projects spanning 3D art, motion graphics, visual effects, and commercial work. Each piece represents a unique creative challenge and technical achievement.
+                </p>
               </div>
               
               <div className="flex flex-wrap gap-3 mb-10 reveal" style={{ transitionDelay: '300ms' }}>

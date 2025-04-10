@@ -68,7 +68,7 @@ const Navbar = () => {
                 className={`text-sm hover-trigger transition-colors relative ${
                   isActive(item.path)
                     ? 'text-accent1'
-                    : 'text-white hover:text-accent1'
+                    : 'text-foreground hover:text-accent1'
                 }`}
               >
                 <span>{item.label}</span>
@@ -106,7 +106,7 @@ const Navbar = () => {
                   className={`text-xl hover-trigger transition-colors relative ${
                     isActive(item.path)
                       ? 'text-accent1'
-                      : 'text-white hover:text-accent1'
+                      : 'text-foreground hover:text-accent1'
                   } animate-slide-in`}
                   style={{ animationDelay: `${i * 0.1}s` }}
                 >

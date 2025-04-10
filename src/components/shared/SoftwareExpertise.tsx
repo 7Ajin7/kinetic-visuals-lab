@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 
@@ -13,15 +12,14 @@ const SoftwareExpertise = () => {
     { name: 'After Effects', category: 'motion' },
     { name: 'Blender', category: '3d' },
     { name: 'Cinema 4D', category: '3d' },
-    { name: 'Unreal Engine', category: 'game' },
-    { name: 'Houdini', category: 'vfx' },
-    { name: 'Nuke', category: 'vfx' },
+    { name: 'Maya', category: '3d' },
+    { name: '3Ds Max', category: '3d' },
+    { name: 'Embergen', category: 'vfx' },
     { name: 'Substance Painter', category: '3d' },
     { name: 'Photoshop', category: 'design' },
     { name: 'Illustrator', category: 'design' },
     { name: 'Premiere Pro', category: 'motion' },
-    { name: 'DaVinci Resolve', category: 'motion' },
-    { name: 'Unity', category: 'game' }
+    { name: 'DaVinci Resolve', category: 'motion' }
   ];
 
   const getCategoryColor = (category: string) => {

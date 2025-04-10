@@ -25,6 +25,40 @@ const AboutSection: React.FC = () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, []);
+  
+  // Career timeline items
+  const timelineItems = [
+    {
+      year: "July 2024 - April 2025",
+      role: "Tron Digital",
+      position: "Creative Lead - 3D/CG Artist"
+    },
+    {
+      year: "February 2023 - July 2024",
+      role: "Aviram Studios",
+      position: "3D Artist and Motion Graphic Designer"
+    },
+    {
+      year: "Dec 2021 - Jan 2022",
+      role: "Infocom Software Pvt. Ltd.",
+      position: "3D Artist Intern"
+    },
+    {
+      year: "June - July 2021",
+      role: "Thinkdots Media Productions",
+      position: "Motion Graphic Designer Intern"
+    },
+    {
+      year: "2019 - 2022",
+      role: "B.A. Animation and Visual Effects",
+      position: "Education"
+    },
+    {
+      year: "2019 - Present",
+      role: "Freelance",
+      position: "Independent Work"
+    }
+  ];
 
   return (
     <section id="about" className="py-20 relative" ref={sectionRef}>
@@ -37,20 +71,20 @@ const AboutSection: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div className="md:col-span-1 reveal" style={{ transitionDelay: '200ms' }}>
-              <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-white/10 glass-card">
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                  {/* Placeholder profile image with sci-fi frame */}
+              <div className="relative aspect-[4/5] overflow-hidden border border-white/10 glass-card">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Profile image with sci-fi frame */}
                   <div className="relative w-full h-full">
                     <div className="absolute inset-0 bg-gradient-to-b from-accent1/5 to-accent2/5"></div>
                     <div className="absolute top-2 left-2 w-12 h-12 border-t-2 border-l-2 border-accent1"></div>
                     <div className="absolute top-2 right-2 w-12 h-12 border-t-2 border-r-2 border-accent2"></div>
                     <div className="absolute bottom-2 left-2 w-12 h-12 border-b-2 border-l-2 border-accent2"></div>
                     <div className="absolute bottom-2 right-2 w-12 h-12 border-b-2 border-r-2 border-accent1"></div>
-                    <div className="w-full h-full flex items-center justify-center">
-                      <svg className="w-1/2 h-1/2 text-white/20" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                      </svg>
-                    </div>
+                    <img 
+                      src="/lovable-uploads/c2f7c402-d4ea-4864-87c1-c5494757d6f4.png" 
+                      alt="Ajin Abraham Daniel" 
+                      className="w-full h-full object-cover"
+                    />
                     {/* Scan line effect */}
                     <div className="absolute inset-0 sci-fi-scanner"></div>
                   </div>
@@ -80,34 +114,26 @@ const AboutSection: React.FC = () => {
           </div>
           
           <div className="reveal relative" style={{ transitionDelay: '600ms' }}>
-            <div className="relative p-6 border border-white/10 rounded-sm bg-white/5 backdrop-blur-sm">
+            <div className="relative p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
               <SciFiElements />
               <h3 className="text-xl md:text-2xl font-bold mb-4">Experience & Education</h3>
               
               <div className="space-y-6">
-                <div className="relative pl-6 border-l border-accent1/30">
-                  <div className="absolute left-0 top-0 transform -translate-x-1/2 w-3 h-3 bg-black border border-accent1 rounded-full"></div>
-                  <div className="font-medium">Senior Motion Designer</div>
-                  <div className="text-sm text-muted-foreground">Creative Studio XYZ • 2020 - Present</div>
-                  <div className="text-sm mt-2">Lead motion graphics and 3D animation projects for clients across tech, entertainment, and lifestyle industries.</div>
-                </div>
-                
-                <div className="relative pl-6 border-l border-accent1/30">
-                  <div className="absolute left-0 top-0 transform -translate-x-1/2 w-3 h-3 bg-black border border-accent1 rounded-full"></div>
-                  <div className="font-medium">3D Artist & Animator</div>
-                  <div className="text-sm text-muted-foreground">Digital Arts Agency • 2017 - 2020</div>
-                  <div className="text-sm mt-2">Created 3D assets, animations, and visual effects for advertising campaigns and digital experiences.</div>
-                </div>
-                
-                <div className="relative pl-6 border-l border-accent1/30">
-                  <div className="absolute left-0 top-0 transform -translate-x-1/2 w-3 h-3 bg-black border border-accent1 rounded-full"></div>
-                  <div className="font-medium">BFA in Motion Media Design</div>
-                  <div className="text-sm text-muted-foreground">University of Creative Arts • 2013 - 2017</div>
-                  <div className="text-sm mt-2">Specialized in 3D animation and motion graphics with a minor in digital storytelling.</div>
-                </div>
+                {timelineItems.map((item, index) => (
+                  <div key={index} className="relative pl-6 border-l border-accent1/30">
+                    <div className="absolute left-0 top-0 transform -translate-x-1/2 w-3 h-3 bg-black border border-accent1"></div>
+                    <div className="font-medium">{item.position}</div>
+                    <div className="text-sm text-muted-foreground">{item.role} • {item.year}</div>
+                    
+                    {/* Connect dots with line except for the last item */}
+                    {index < timelineItems.length - 1 && (
+                      <div className="absolute left-0 top-6 bottom-0 w-px bg-accent1"></div>
+                    )}
+                  </div>
+                ))}
                 
                 <div className="relative pl-6">
-                  <div className="absolute left-0 top-0 transform -translate-x-1/2 w-3 h-3 bg-black border border-accent1 rounded-full"></div>
+                  <div className="absolute left-0 top-0 transform -translate-x-1/2 w-3 h-3 bg-black border border-accent1"></div>
                 </div>
               </div>
             </div>
@@ -115,7 +141,7 @@ const AboutSection: React.FC = () => {
             <div className="flex justify-center mt-10">
               <a 
                 href="/about" 
-                className="group flex items-center px-6 py-2.5 bg-white text-black hover:bg-accent1 hover:text-white rounded-sm transition-all duration-300 hover-trigger"
+                className="group flex items-center px-6 py-2.5 bg-white text-black hover:bg-accent1 hover:text-white transition-all duration-300 hover-trigger"
               >
                 More About Me
                 <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />

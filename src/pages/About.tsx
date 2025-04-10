@@ -30,24 +30,34 @@ const About = () => {
   // Career timeline data
   const timelineItems = [
     {
-      year: "2022 - Present",
-      role: "Freelance 3D Artist & Motion Designer",
+      year: "July 2024 - April 2025",
+      role: "Tron Digital - Creative Lead - 3D/CG Artist",
+      description: "Leading creative projects and developing high-quality 3D assets and animations."
+    },
+    {
+      year: "February 2023 - July 2024",
+      role: "Aviram Studios - 3D Artist and Motion Graphic Designer",
+      description: "Created 3D assets and motion graphics for various commercial and artistic projects."
+    },
+    {
+      year: "Dec 2021 - Jan 2022",
+      role: "Infocom Software Pvt. Ltd. - 3D Artist Intern",
+      description: "Developed 3D models and assets for software applications and visual media."
+    },
+    {
+      year: "June - July 2021",
+      role: "Thinkdots Media Productions - Motion Graphic Designer Intern",
+      description: "Designed motion graphics for digital media and advertising campaigns."
+    },
+    {
+      year: "2019 - 2022",
+      role: "B.A. Animation and Visual Effects",
+      description: "Studied animation principles, visual effects techniques, and digital art creation."
+    },
+    {
+      year: "2019 - Present",
+      role: "Freelance",
       description: "Working with global clients on various projects, specializing in 3D art, motion graphics, and visual effects."
-    },
-    {
-      year: "2020 - 2022",
-      role: "Senior Motion Designer at Creative Studio",
-      description: "Led a team of designers to create award-winning motion graphics and VFX for advertising campaigns."
-    },
-    {
-      year: "2018 - 2020",
-      role: "Junior 3D Artist at Animation Studio",
-      description: "Created 3D assets and animations for short films and commercial projects."
-    },
-    {
-      year: "2015 - 2018",
-      role: "BFA in Digital Arts & Animation",
-      description: "Graduated with honors, specializing in 3D modeling and motion design."
     }
   ];
 
@@ -83,7 +93,7 @@ const About = () => {
                   <h2 className="text-2xl font-bold mb-8">Technical Expertise</h2>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="glass-card p-6 rounded-lg">
+                    <div className="glass-card p-6">
                       <h3 className="text-xl font-semibold mb-4">Software</h3>
                       <ul className="space-y-2">
                         <li className="flex items-center">
@@ -100,20 +110,20 @@ const About = () => {
                         </li>
                         <li className="flex items-center">
                           <div className="w-2 h-2 bg-accent1 rounded-full mr-2"></div>
-                          <span>Houdini (Intermediate)</span>
+                          <span>Maya (Intermediate)</span>
                         </li>
                         <li className="flex items-center">
                           <div className="w-2 h-2 bg-accent1 rounded-full mr-2"></div>
-                          <span>Unreal Engine (Intermediate)</span>
+                          <span>3Ds Max (Intermediate)</span>
                         </li>
                         <li className="flex items-center">
                           <div className="w-2 h-2 bg-accent1 rounded-full mr-2"></div>
-                          <span>Substance Designer/Painter (Intermediate)</span>
+                          <span>Embergen (Intermediate)</span>
                         </li>
                       </ul>
                     </div>
                     
-                    <div className="glass-card p-6 rounded-lg">
+                    <div className="glass-card p-6">
                       <h3 className="text-xl font-semibold mb-4">Skills</h3>
                       <ul className="space-y-2">
                         <li className="flex items-center">
@@ -162,6 +172,11 @@ const About = () => {
                           <div className="absolute left-0 md:left-auto md:right-full top-1 md:mr-8 w-3 h-3 rounded-full bg-accent1"></div>
                           <h3 className="text-xl font-semibold mb-2">{item.role}</h3>
                           <p className="text-muted-foreground">{item.description}</p>
+                          
+                          {/* Connect dots with line except for the last item */}
+                          {index < timelineItems.length - 1 && (
+                            <div className="absolute left-1.5 top-6 bottom-0 w-px bg-accent1/30 md:hidden"></div>
+                          )}
                         </div>
                       </div>
                     ))}

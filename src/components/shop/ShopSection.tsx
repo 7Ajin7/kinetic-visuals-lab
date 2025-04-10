@@ -1,164 +1,220 @@
 
 import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { ShoppingCart } from 'lucide-react';
+import { ArrowRight, Tag, ShoppingBag, Info, CornerDownRight } from 'lucide-react';
 import DetailModal from '../shared/DetailModal';
 
-interface Product {
+interface ProductItem {
   id: number;
-  name: string;
-  price: number;
-  thumbnail: string;
-  description: string;
+  title: string;
   category: string;
-  format: string;
-  images: string[];
+  thumbnail: string;
+  price: number;
+  description: string;
+  features: string[];
+  formats: string[];
 }
 
 const ShopSection = () => {
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Sample products data
-  const products: Product[] = [
+  const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
+  
+  // Featured products data
+  const featuredProducts: ProductItem[] = [
     {
       id: 1,
-      name: "Abstract Shapes Pack",
-      price: 19.99,
-      thumbnail: "https://images.unsplash.com/photo-1633985871666-93c457e221b0",
-      description: "A collection of 50+ abstract 3D shapes and elements ready to use in your motion graphics projects. Perfect for creating modern, dynamic compositions.",
-      category: "3D Assets",
-      format: "OBJ, FBX, Blender",
-      images: [
-        "https://images.unsplash.com/photo-1633985871666-93c457e221b0",
-        "https://images.unsplash.com/photo-1569396116180-210c182bedb8",
-      ]
+      title: "Abstract Shapes Pack",
+      category: "3D Models",
+      thumbnail: "https://images.unsplash.com/photo-1633293928675-841273025782",
+      price: 29.99,
+      description: "A collection of 20 abstract 3D shapes perfect for motion graphics, scene composition, and visual effects. Each model is optimized for real-time rendering and includes PBR textures.",
+      features: [
+        "20 unique abstract shapes",
+        "4K PBR textures included",
+        "Low-poly and high-poly versions",
+        "Fully rigged for animation"
+      ],
+      formats: ["FBX", "OBJ", "Blender", "Cinema 4D"]
     },
     {
       id: 2,
-      name: "Glitch Transitions",
-      price: 24.99,
+      title: "Dynamic Transitions",
+      category: "Motion Templates",
       thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f",
-      description: "10 customizable glitch transitions to add edgy effects between scenes in your videos and motion graphics projects.",
-      category: "After Effects Template",
-      format: "AEP (After Effects CC 2019+)",
-      images: [
-        "https://images.unsplash.com/photo-1550745165-9bc0b252726f",
-        "https://images.unsplash.com/photo-1550745165-9bc0b252726f",
-      ]
+      price: 39.99,
+      description: "10 professionally designed transition templates for After Effects. Perfect for creating smooth scene changes, title animations, and dynamic effects in your video projects.",
+      features: [
+        "10 unique transitions",
+        "Customizable duration and colors",
+        "Includes tutorial video",
+        "Easy to use with any footage"
+      ],
+      formats: ["After Effects"]
     },
     {
       id: 3,
-      name: "Sci-Fi UI Kit",
-      price: 39.99,
-      thumbnail: "https://images.unsplash.com/photo-1506399558188-acca6f8cbf41",
-      description: "Complete UI kit for futuristic interfaces. Includes HUDs, graphs, data displays, and animated elements for film and game projects.",
-      category: "UI Elements",
-      format: "AEP, MOV with Alpha",
-      images: [
-        "https://images.unsplash.com/photo-1506399558188-acca6f8cbf41",
-        "https://images.unsplash.com/photo-1565106430482-8f6e74349ca1",
-      ]
+      title: "Sci-Fi UI Kit",
+      category: "Motion Graphics",
+      thumbnail: "https://images.unsplash.com/photo-1496096265110-f83ad7f96608",
+      price: 49.99,
+      description: "Comprehensive UI kit featuring futuristic interface elements, HUD components, and animated screens for sci-fi projects. Perfect for film, games, and interactive media.",
+      features: [
+        "50+ UI elements",
+        "15 pre-animated screens",
+        "Modular design for easy customization",
+        "4K resolution"
+      ],
+      formats: ["After Effects", "Premiere Pro", "PNG Sequences"]
     }
   ];
-
-  const openModal = (product: Product) => {
-    setSelectedProduct(product);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
+  
   return (
-    <section id="shop" className="py-20 bg-background relative">
+    <section id="shop" className="py-20 relative">
       <div className="container px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-10 reveal">
-            Digital <span className="text-gradient-1">Products</span>
-          </h2>
+        <div className="max-w-5xl mx-auto">
+          <div className="flex justify-between items-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold reveal">
+              Digital <span className="text-gradient-1">Products</span>
+            </h2>
+            <a 
+              href="/shop" 
+              className="hidden md:flex items-center text-sm hover-trigger link-underline"
+            >
+              Browse All Products
+              <ArrowRight size={14} className="ml-1" />
+            </a>
+          </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
-            {products.map(product => (
-              <div 
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-10">
+            {featuredProducts.map((product, index) => (
+              <div
                 key={product.id}
-                className="group bg-black/20 border border-white/5 overflow-hidden flex flex-col hover-trigger"
+                className="group relative bg-black/20 overflow-hidden border border-white/5 hover-trigger cursor-pointer reveal"
+                style={{ transitionDelay: `${200 + index * 100}ms` }}
+                onClick={() => setSelectedProduct(product)}
               >
-                <div 
-                  className="aspect-[4/3] overflow-hidden cursor-pointer"
-                  onClick={() => openModal(product)}
-                >
+                <div className="aspect-[4/3] overflow-hidden">
                   <img 
                     src={product.thumbnail} 
-                    alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    alt={product.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
-                
-                <div className="p-4 flex-grow flex flex-col">
-                  <span className="text-xs text-accent1 font-medium mb-1">{product.category}</span>
-                  <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
-                  <div className="mt-auto pt-4 flex items-center justify-between">
-                    <div className="text-xl font-bold">${product.price}</div>
-                    <Button 
-                      variant="default" 
-                      className="flex items-center gap-1 bg-accent2 hover:bg-accent2/80"
-                      onClick={() => window.open("https://gumroad.com", "_blank")}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+                  <span className="text-xs font-medium text-accent2 uppercase tracking-wider mb-2">{product.category}</span>
+                  <h3 className="text-xl font-bold">{product.title}</h3>
+                  <div className="flex justify-between items-center mt-2">
+                    <span className="font-mono text-white">${product.price}</span>
+                    <button 
+                      className="px-3 py-1.5 border border-accent2/50 bg-black/50 text-white flex items-center justify-center hover:bg-accent2/20 transition-colors"
                     >
-                      <ShoppingCart size={16} />
-                      Buy
-                    </Button>
+                      <Tag size={14} className="mr-2" /> View Details
+                    </button>
                   </div>
+                </div>
+                
+                <div className="absolute top-4 left-4 flex space-x-1">
+                  <div className="size-2 bg-accent2 animate-pulse-slow"></div>
+                  <div className="size-2 bg-accent1 animate-pulse-slow" style={{ animationDelay: '0.5s' }}></div>
                 </div>
               </div>
             ))}
+          </div>
+          
+          <div className="text-center md:hidden">
+            <a 
+              href="/shop" 
+              className="inline-flex items-center text-sm hover-trigger link-underline"
+            >
+              Browse All Products
+              <ArrowRight size={14} className="ml-1" />
+            </a>
           </div>
         </div>
       </div>
 
       {/* Product Detail Modal */}
       {selectedProduct && (
-        <DetailModal 
-          isOpen={isModalOpen} 
-          onClose={closeModal} 
-          title={selectedProduct.name}
+        <DetailModal
+          isOpen={!!selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+          title={selectedProduct.title}
           variant="product"
         >
-          <div className="h-full overflow-y-auto p-6">
-            {selectedProduct.images?.map((image, index) => (
-              <div key={index} className="mb-6">
-                <img 
-                  src={image} 
-                  alt={`${selectedProduct.name} - image ${index + 1}`}
-                  className="w-full h-auto border border-white/10"
-                />
-              </div>
-            ))}
-          </div>
-          <div className="h-full p-6 border-l border-accent1/20 flex flex-col">
-            <h2 className="text-2xl font-bold mb-2">{selectedProduct.name}</h2>
-            <span className="text-xs font-medium text-accent1 uppercase tracking-wider mb-4">
-              {selectedProduct.category}
-            </span>
-            <p className="text-muted-foreground mb-6">
-              {selectedProduct.description}
-            </p>
-            <div className="mb-6">
-              <h3 className="text-sm font-medium mb-2">Format:</h3>
-              <p className="text-sm text-muted-foreground">{selectedProduct.format}</p>
+          {/* Left Side - Product Images */}
+          <div className="h-full overflow-auto scrollbar-none border-r border-accent2/10 p-6">
+            <div className="aspect-square overflow-hidden mb-6">
+              <img 
+                src={selectedProduct.thumbnail} 
+                alt={selectedProduct.title}
+                className="w-full h-full object-cover border border-accent2/10"
+              />
             </div>
-            <div className="mt-auto">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-2xl font-bold">${selectedProduct.price}</span>
-                <Button 
-                  variant="default" 
-                  className="flex items-center gap-1 bg-accent2 hover:bg-accent2/80"
-                  onClick={() => window.open("https://gumroad.com", "_blank")}
-                >
-                  <ShoppingCart size={16} />
-                  Buy Now
-                </Button>
+          </div>
+          
+          {/* Right Side - Product Info */}
+          <div className="p-6 overflow-y-auto scrollbar-none">
+            <div className="mb-1 flex items-center text-xs font-mono text-accent2">
+              <div className="size-2 bg-accent2 mr-2"></div>
+              <span>{selectedProduct.category}</span>
+            </div>
+            
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 font-display">
+              {selectedProduct.title}
+            </h2>
+            
+            <div className="mb-6 flex items-center justify-between">
+              <span className="text-2xl font-mono">${selectedProduct.price}</span>
+              <button className="px-4 py-2 bg-accent2 text-black hover:bg-accent2/80 transition-colors flex items-center gap-2">
+                <ShoppingBag size={16} />
+                Add to Cart
+              </button>
+            </div>
+            
+            <div className="mb-6 space-y-4">
+              <h3 className="text-lg font-semibold flex items-center">
+                <CornerDownRight size={16} className="mr-2 text-accent2" />
+                Description
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {selectedProduct.description}
+              </p>
+            </div>
+            
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-3 flex items-center">
+                <CornerDownRight size={16} className="mr-2 text-accent2" />
+                Features
+              </h3>
+              <ul className="space-y-2">
+                {selectedProduct.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-start text-sm">
+                    <div className="w-1.5 h-1.5 bg-accent2 mt-1.5 mr-2"></div>
+                    <span className="text-muted-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-3 flex items-center">
+                <CornerDownRight size={16} className="mr-2 text-accent2" />
+                File Formats
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {selectedProduct.formats.map((format) => (
+                  <span 
+                    key={format} 
+                    className="px-3 py-1 bg-white/5 border border-accent2/20 text-sm"
+                  >
+                    {format}
+                  </span>
+                ))}
+              </div>
+            </div>
+            
+            <div className="pt-4 border-t border-white/10">
+              <div className="flex items-start gap-2 text-xs text-muted-foreground">
+                <Info size={12} className="flex-shrink-0 mt-0.5 text-accent2" />
+                <span>Products are delivered via email after purchase. Please allow up to 24 hours for delivery.</span>
               </div>
             </div>
           </div>
