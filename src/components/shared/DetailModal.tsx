@@ -8,6 +8,7 @@ interface DetailModalProps {
   title: string;
   children: React.ReactNode;
   className?: string;
+  variant?: string; // Added variant prop
 }
 
 const DetailModal: React.FC<DetailModalProps> = ({ 
@@ -15,7 +16,8 @@ const DetailModal: React.FC<DetailModalProps> = ({
   onClose, 
   title, 
   children,
-  className = ''
+  className = '',
+  variant = 'default' // Default value added
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   
@@ -45,13 +47,18 @@ const DetailModal: React.FC<DetailModalProps> = ({
 
   if (!isOpen) return null;
 
+  // Add variant-specific class if needed
+  const variantClass = variant === 'project' || variant === 'product' 
+    ? `detail-modal-${variant}` 
+    : '';
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8">
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
       
       <div 
         ref={modalRef}
-        className={`relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-background/95 border border-white/10 animate-scale-in-y ${className}`}
+        className={`relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-background/95 border border-white/10 animate-scale-in-y ${className} ${variantClass}`}
       >
         <div className="sticky top-0 z-10 flex items-center justify-between p-4 border-b border-white/10 bg-background/95 backdrop-blur-sm">
           <h2 className="text-xl font-bold">{title}</h2>
