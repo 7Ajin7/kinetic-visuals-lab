@@ -33,11 +33,6 @@ function ScrollToTop() {
 }
 
 const App = () => {
-  // Force dark mode
-  React.useEffect(() => {
-    document.documentElement.classList.add('dark');
-  }, []);
-
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
