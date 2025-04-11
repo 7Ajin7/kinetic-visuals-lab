@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingCart, Download, Search, X, Tag, Info, Package } from 'lucide-react';
+import { ShoppingCart, Download, Search, Tag, Info, Package } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '../hooks/use-toast';
 import Navbar from '../components/layout/Navbar';
@@ -8,7 +8,6 @@ import CustomCursor from '../components/shared/CustomCursor';
 import AnimatedBackground from '../components/shared/AnimatedBackground';
 import DetailModal from '../components/shared/DetailModal';
 import SciFiElements from '../components/shared/SciFiElements';
-import ThemeToggle from '../components/shared/ThemeToggle';
 
 interface Product {
   id: number;
@@ -209,7 +208,6 @@ const Shop = () => {
                 <h1 className="text-4xl md:text-5xl font-bold mb-4 reveal">
                   Digital <span className="text-gradient-1">Products</span>
                 </h1>
-                <ThemeToggle />
               </div>
               
               <p className="text-muted-foreground max-w-2xl mb-12 reveal" style={{ transitionDelay: '200ms' }}>
