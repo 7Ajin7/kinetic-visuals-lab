@@ -8,7 +8,6 @@ import ContactSection from '../components/contact/ContactSection';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import CustomCursor from '../components/shared/CustomCursor';
-import SciFiElements from '../components/shared/SciFiElements';
 
 const Index = () => {
   useEffect(() => {
@@ -35,9 +34,6 @@ const Index = () => {
   return (
     <div className="min-h-screen overflow-hidden">
       <CustomCursor />
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <SciFiElements />
-      </div>
       <Navbar />
       <main>
         <HeroSection />

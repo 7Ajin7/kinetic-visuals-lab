@@ -92,7 +92,6 @@ const Navbar = () => {
       {/* Mobile Navigation */}
       {isOpen && (
         <div className="fixed inset-0 top-[57px] bg-background z-30 md:hidden animate-fade-in">
-          <SciFiElements />
           <div className="container px-4 py-8 mx-auto">
             <nav className="flex flex-col gap-6 items-center">
               {navItems.map((item, i) => (

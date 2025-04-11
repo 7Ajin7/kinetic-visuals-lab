@@ -70,46 +70,48 @@ const About = () => {
           <AnimatedBackground />
           <div className="relative z-10 pt-32 pb-16">
             <div className="container px-4">
-              <div className="max-w-4xl mx-auto">
+              <div className="max-w-5xl mx-auto">
                 <h1 className="text-4xl md:text-5xl font-bold mb-4 reveal">
                   About <span className="text-gradient-1">Me</span>
                 </h1>
                 
-                {/* Added profile photo section */}
-                <div className="my-10 reveal" style={{ transitionDelay: '100ms' }}>
-                  <div className="max-w-md mx-auto relative">
-                    <div className="aspect-[4/5] relative overflow-hidden glass-card">
-                      <div className="absolute inset-0 bg-gradient-to-b from-accent1/5 to-accent2/5"></div>
-                      <div className="absolute top-2 left-2 w-12 h-12 border-t-2 border-l-2 border-accent1"></div>
-                      <div className="absolute top-2 right-2 w-12 h-12 border-t-2 border-r-2 border-accent2"></div>
-                      <div className="absolute bottom-2 left-2 w-12 h-12 border-b-2 border-l-2 border-accent2"></div>
-                      <div className="absolute bottom-2 right-2 w-12 h-12 border-b-2 border-r-2 border-accent1"></div>
-                      <img 
-                        src="/lovable-uploads/06d9d830-0f8a-42ef-9230-c0bfcc109087.png" 
-                        alt="Ajin Abraham Daniel" 
-                        className="w-full h-full object-cover object-center"
-                      />
-                      {/* Scan line effect */}
-                      <div className="absolute inset-0 sci-fi-scanner"></div>
+                {/* Updated profile photo section with left-aligned image and text on right */}
+                <div className="my-10 grid grid-cols-1 md:grid-cols-12 gap-8 reveal" style={{ transitionDelay: '100ms' }}>
+                  <div className="md:col-span-5">
+                    <div className="relative">
+                      <div className="aspect-[4/5] relative overflow-hidden glass-card">
+                        <div className="absolute inset-0 bg-gradient-to-b from-accent1/5 to-accent2/5"></div>
+                        <div className="absolute top-2 left-2 w-12 h-12 border-t-2 border-l-2 border-accent1"></div>
+                        <div className="absolute top-2 right-2 w-12 h-12 border-t-2 border-r-2 border-accent2"></div>
+                        <div className="absolute bottom-2 left-2 w-12 h-12 border-b-2 border-l-2 border-accent2"></div>
+                        <div className="absolute bottom-2 right-2 w-12 h-12 border-b-2 border-r-2 border-accent1"></div>
+                        <img 
+                          src="/lovable-uploads/e68781ca-c579-4dc0-88a7-3786a45d687d.png" 
+                          alt="Ajin Abraham Daniel" 
+                          className="w-full h-full object-cover object-center"
+                        />
+                        {/* Scan line effect */}
+                        <div className="absolute inset-0 sci-fi-scanner"></div>
+                      </div>
+                      {/* Tech frame elements */}
+                      <div className="absolute -bottom-4 -left-4 w-8 h-8 border-l border-b border-accent1/50"></div>
+                      <div className="absolute -top-4 -right-4 w-8 h-8 border-r border-t border-accent2/50"></div>
                     </div>
-                    {/* Tech frame elements */}
-                    <div className="absolute -bottom-4 -left-4 w-8 h-8 border-l border-b border-accent1/50"></div>
-                    <div className="absolute -top-4 -right-4 w-8 h-8 border-r border-t border-accent2/50"></div>
                   </div>
-                </div>
-                
-                <div className="space-y-6 text-muted-foreground reveal" style={{ transitionDelay: '200ms' }}>
-                  <p className="text-lg">
-                    I'm Ajin Abraham Daniel, a passionate 3D artist and motion designer with a keen eye for detail and a love for creating immersive visual experiences. My work combines technical precision with artistic expression to bring ideas to life through movement and form.
-                  </p>
                   
-                  <p>
-                    With expertise in industry-standard tools and a background in both commercial and artistic projects, I specialize in creating compelling visual narratives that engage and inspire audiences. My approach is collaborative, detail-oriented, and focused on delivering high-quality results that exceed expectations.
-                  </p>
-                  
-                  <p>
-                    Whether it's crafting stunning 3D environments, designing fluid animations, or producing eye-catching visual effects, I bring creativity and technical skill to every project. I'm constantly exploring new techniques and pushing the boundaries of what's possible in digital art and motion design.
-                  </p>
+                  <div className="md:col-span-7 space-y-6 text-muted-foreground">
+                    <p className="text-lg">
+                      I'm Ajin Abraham Daniel, a passionate 3D artist and motion designer with a keen eye for detail and a love for creating immersive visual experiences. My work combines technical precision with artistic expression to bring ideas to life through movement and form.
+                    </p>
+                    
+                    <p>
+                      With expertise in industry-standard tools and a background in both commercial and artistic projects, I specialize in creating compelling visual narratives that engage and inspire audiences. My approach is collaborative, detail-oriented, and focused on delivering high-quality results that exceed expectations.
+                    </p>
+                    
+                    <p>
+                      Whether it's crafting stunning 3D environments, designing fluid animations, or producing eye-catching visual effects, I bring creativity and technical skill to every project. I'm constantly exploring new techniques and pushing the boundaries of what's possible in digital art and motion design.
+                    </p>
+                  </div>
                 </div>
                 
                 <div className="mt-16 reveal" style={{ transitionDelay: '400ms' }}>

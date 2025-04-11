@@ -69,8 +69,8 @@ const AboutSection: React.FC = () => {
             About <span className="text-gradient-1">Me</span>
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="md:col-span-1 reveal" style={{ transitionDelay: '200ms' }}>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+            <div className="md:col-span-5 reveal" style={{ transitionDelay: '200ms' }}>
               <div className="relative aspect-[4/5] overflow-hidden border border-white/10 glass-card">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Profile image with sci-fi frame */}
@@ -81,7 +81,7 @@ const AboutSection: React.FC = () => {
                     <div className="absolute bottom-2 left-2 w-12 h-12 border-b-2 border-l-2 border-accent2"></div>
                     <div className="absolute bottom-2 right-2 w-12 h-12 border-b-2 border-r-2 border-accent1"></div>
                     <img 
-                      src="/lovable-uploads/06d9d830-0f8a-42ef-9230-c0bfcc109087.png" 
+                      src="/lovable-uploads/e68781ca-c579-4dc0-88a7-3786a45d687d.png" 
                       alt="Ajin Abraham Daniel" 
                       className="w-full h-full object-cover"
                     />
@@ -92,7 +92,7 @@ const AboutSection: React.FC = () => {
               </div>
             </div>
             
-            <div className="md:col-span-2">
+            <div className="md:col-span-7">
               <div className="reveal" style={{ transitionDelay: '300ms' }}>
                 <p className="text-muted-foreground mb-6">
                   I'm Ajin Abraham Daniel, a 3D Artist and Motion Designer based in [Your Location]. I specialize in creating bold visual narratives through the fusion of design and motion.
@@ -115,7 +115,6 @@ const AboutSection: React.FC = () => {
           
           <div className="reveal relative" style={{ transitionDelay: '600ms' }}>
             <div className="relative p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
-              <SciFiElements />
               <h3 className="text-xl md:text-2xl font-bold mb-4">Experience & Education</h3>
               
               <div className="space-y-6">
