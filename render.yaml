@@ -2,5 +2,5 @@ services:
   - type: web
     name: lovable-portfolio
     env: static
-    buildCommand: lovable build
+    buildCommand: npm run build
     staticPublishPath: dist
