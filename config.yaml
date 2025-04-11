@@ -1,0 +1,51 @@
+
+# Project Configuration
+project:
+  name: "Ajin Abraham Daniel Portfolio"
+  version: "1.0.0"
+  description: "Portfolio website for 3D Artist & Motion Designer"
+
+# Author Information
+author:
+  name: "Ajin Abraham Daniel"
+  profession: "3D Artist & Motion Designer"
+  description: "Crafting bold visuals and kinetic stories through design and movement."
+
+# Site Configuration
+site:
+  theme: "dark"
+  navigation:
+    - name: "Home"
+      path: "/"
+    - name: "About"
+      path: "/about"
+    - name: "Works"
+      path: "/works"
+    - name: "Shop"
+      path: "/shop"
+    - name: "Contact"
+      path: "/contact"
+
+# Social Media Links
+social:
+  - platform: "Instagram"
+    url: "https://instagram.com/username"
+  - platform: "Twitter"
+    url: "https://twitter.com/username"
+  - platform: "Behance"
+    url: "https://behance.net/username"
+  - platform: "LinkedIn"
+    url: "https://linkedin.com/in/username"
+
+# Software Expertise
+expertise:
+  - name: "Blender"
+    level: 90
+  - name: "Cinema 4D"
+    level: 85
+  - name: "After Effects"
+    level: 95
+  - name: "Photoshop"
+    level: 80
+  - name: "Unreal Engine"
+    level: 75
