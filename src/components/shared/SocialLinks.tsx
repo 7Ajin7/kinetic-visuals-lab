@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Linkedin, Instagram, ExternalLink } from 'lucide-react';
+import { Linkedin, Instagram } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface SocialLinksProps {
@@ -10,22 +10,24 @@ interface SocialLinksProps {
   gap?: number;
 }
 
-// Custom Artstation icon component
+// Custom Artstation icon component with improved SVG path
 const ArtstationIcon = ({ size = 20 }) => {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M2 19.5h12l3-6 3 6h2m-16 0L12 4l6 15.5m-16 0l4-7.5h16l-4 7.5" />
+      <path d="M2 19.5l9-16 9 16M4 19.5h15.5M10 19.5l3.5-6 3.5 6M2.5 19.5l9-16V10" />
     </svg>
   );
 };
 
-// Custom Behance icon component
+// Custom Behance icon component with improved SVG path
 const BehanceIcon = ({ size = 20 }) => {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 9h6c.65 0 1.26.32 1.62.84A2.5 2.5 0 0 1 7.5 14H3zm0 5h7a2.5 2.5 0 0 0 0-5" />
-      <path d="M16 9h6a2.5 2.5 0 0 1 0 5h-6M16 14h4a2.5 2.5 0 0 0 2.5-2.5" />
-      <path d="M14 8h7m-7 8h7" />
+      <path d="M1 12.5h6c.6 0 1-.4 1-1v-1c0-.6-.4-1-1-1H1v6h6c.6 0 1-.4 1-1v-1c0-.6-.4-1-1-1H1" />
+      <path d="M16 6H13v12h3c1.7 0 3-1.3 3-3v-1c0-1-.5-1.9-1.4-2.4.9-.5 1.4-1.4 1.4-2.4v-1c0-1.2-1-2.2-3-2.2z" />
+      <path d="M20 16v-1c0-.6-.4-1-1-1h-2" />
+      <path d="M20 9v-1c0-.6-.4-1-1-1h-2" />
+      <path d="M8 10h4" />
     </svg>
   );
 };

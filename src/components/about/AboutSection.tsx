@@ -81,7 +81,7 @@ const AboutSection: React.FC = () => {
                     <div className="absolute bottom-2 left-2 w-12 h-12 border-b-2 border-l-2 border-accent2"></div>
                     <div className="absolute bottom-2 right-2 w-12 h-12 border-b-2 border-r-2 border-accent1"></div>
                     <img 
-                      src="/lovable-uploads/c2f7c402-d4ea-4864-87c1-c5494757d6f4.png" 
+                      src="/lovable-uploads/06d9d830-0f8a-42ef-9230-c0bfcc109087.png" 
                       alt="Ajin Abraham Daniel" 
                       className="w-full h-full object-cover"
                     />

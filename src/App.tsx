@@ -1,5 +1,5 @@
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -20,7 +20,7 @@ const queryClient = new QueryClient();
 function ScrollToTop() {
   const { pathname } = useLocation();
 
-  useEffect(() => {
+  React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
@@ -28,14 +28,9 @@ function ScrollToTop() {
 }
 
 const App = () => {
-  // Check for saved theme preference or default to dark
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-      document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.add('dark');
-    }
+  // Force dark mode globally
+  React.useEffect(() => {
+    document.documentElement.classList.add('dark');
   }, []);
 
   return (

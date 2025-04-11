@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { cn } from '@/lib/utils';
 
@@ -14,6 +15,7 @@ const SoftwareExpertise = () => {
     { name: 'Cinema 4D', category: '3d' },
     { name: 'Maya', category: '3d' },
     { name: '3Ds Max', category: '3d' },
+    { name: 'ZBrush', category: '3d' }, // Added ZBrush
     { name: 'Embergen', category: 'vfx' },
     { name: 'Substance Painter', category: '3d' },
     { name: 'Photoshop', category: 'design' },

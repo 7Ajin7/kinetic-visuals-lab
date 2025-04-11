@@ -75,6 +75,29 @@ const About = () => {
                   About <span className="text-gradient-1">Me</span>
                 </h1>
                 
+                {/* Added profile photo section */}
+                <div className="my-10 reveal" style={{ transitionDelay: '100ms' }}>
+                  <div className="max-w-md mx-auto relative">
+                    <div className="aspect-[4/5] relative overflow-hidden glass-card">
+                      <div className="absolute inset-0 bg-gradient-to-b from-accent1/5 to-accent2/5"></div>
+                      <div className="absolute top-2 left-2 w-12 h-12 border-t-2 border-l-2 border-accent1"></div>
+                      <div className="absolute top-2 right-2 w-12 h-12 border-t-2 border-r-2 border-accent2"></div>
+                      <div className="absolute bottom-2 left-2 w-12 h-12 border-b-2 border-l-2 border-accent2"></div>
+                      <div className="absolute bottom-2 right-2 w-12 h-12 border-b-2 border-r-2 border-accent1"></div>
+                      <img 
+                        src="/lovable-uploads/06d9d830-0f8a-42ef-9230-c0bfcc109087.png" 
+                        alt="Ajin Abraham Daniel" 
+                        className="w-full h-full object-cover object-center"
+                      />
+                      {/* Scan line effect */}
+                      <div className="absolute inset-0 sci-fi-scanner"></div>
+                    </div>
+                    {/* Tech frame elements */}
+                    <div className="absolute -bottom-4 -left-4 w-8 h-8 border-l border-b border-accent1/50"></div>
+                    <div className="absolute -top-4 -right-4 w-8 h-8 border-r border-t border-accent2/50"></div>
+                  </div>
+                </div>
+                
                 <div className="space-y-6 text-muted-foreground reveal" style={{ transitionDelay: '200ms' }}>
                   <p className="text-lg">
                     I'm Ajin Abraham Daniel, a passionate 3D artist and motion designer with a keen eye for detail and a love for creating immersive visual experiences. My work combines technical precision with artistic expression to bring ideas to life through movement and form.
@@ -115,6 +138,10 @@ const About = () => {
                         <li className="flex items-center">
                           <div className="w-2 h-2 bg-accent1 rounded-full mr-2"></div>
                           <span>3Ds Max (Intermediate)</span>
+                        </li>
+                        <li className="flex items-center">
+                          <div className="w-2 h-2 bg-accent1 rounded-full mr-2"></div>
+                          <span>ZBrush (Advanced)</span>
                         </li>
                         <li className="flex items-center">
                           <div className="w-2 h-2 bg-accent1 rounded-full mr-2"></div>
